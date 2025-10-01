@@ -50,7 +50,7 @@ const Footer = () => {
 
         <div className="border-t border-slate-700 pt-8 text-center text-sm text-slate-400">
           <p>© 2025 Design Lab - Plateforme d'apprentissage en Design Graphique</p>
-          <p className="mt-2">Développé avec passion pour les designers en herbe 🎨</p>
+          <p className="mt-2">Développé avec passion pour les designers en herbe : ),</p>
         </div>
       </div>
     </footer>

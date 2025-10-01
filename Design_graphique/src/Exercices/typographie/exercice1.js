@@ -1,215 +1,152 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Check, X } from 'lucide-react';
 
-const TypographyExerciseMockup = () => {
+const TypographyExercise = () => {
+  const [answers, setAnswers] = useState({});
+  const [showResults, setShowResults] = useState(false);
+
+  const exercises = [
+    { id: 1, text: "Design", font: "Times New Roman", correctAnswer: "Times New Roman" },
+    { id: 2, text: "Créativité", font: "Arial", correctAnswer: "Arial" },
+    { id: 3, text: "Typography", font: "Georgia", correctAnswer: "Garamond" },
+    { id: 4, text: "Modernité", font: "sans-serif", correctAnswer: "Helvetica" }
+  ];
+
+  const fontOptions = ["Times New Roman", "Arial", "Garamond", "Helvetica", "Verdana", "Comic Sans MS"];
+
+  const handleAnswerChange = (id, value) => {
+    setAnswers({ ...answers, [id]: value });
+  };
+
+  const checkAnswers = () => {
+    setShowResults(true);
+  };
+
+  const resetExercise = () => {
+    setAnswers({});
+    setShowResults(false);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-      <div className="max-w-6xl mx-auto">
-        
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 p-8">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-slate-800 mb-3">
-            Mockup Visuel - Exercice de Typographie
+          <h1 className="text-4xl font-bold text-gray-800 mb-3">
+            Exercice 1 : Identification de Typographies
           </h1>
-          <p className="text-lg text-slate-600">
-            Aperçu de l'interface avec cases à cocher
+          <p className="text-lg text-gray-600">
+            Associez chaque mot affiché avec le nom de sa police
           </p>
         </div>
 
-        {/* Main Mockup */}
-        <div className="bg-white rounded-2xl shadow-2xl p-10 border-4 border-slate-300">
-          
-          {/* Exercise Header */}
-          <div className="text-center mb-10 pb-6 border-b-4 border-indigo-600">
-            <h2 className="text-3xl font-bold text-indigo-700 mb-2">
-              EXERCICE 1 : IDENTIFICATION DE TYPOGRAPHIES
-            </h2>
-            <p className="text-slate-600 text-lg">
-              Associez chaque mot affiché avec le nom de sa police parmi la liste
-            </p>
-          </div>
+        {/* Main Exercise Grid */}
+        <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+            {exercises.map((exercise) => (
+              <div 
+                key={exercise.id}
+                className="border-2 border-gray-200 rounded-xl p-6 hover:border-indigo-300 transition-all"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-sm font-semibold text-indigo-600 bg-indigo-100 px-3 py-1 rounded-full">
+                    Mot {exercise.id}
+                  </span>
+                  {showResults && (
+                    <span>
+                      {answers[exercise.id] === exercise.correctAnswer ? (
+                        <Check className="text-green-500 w-6 h-6" />
+                      ) : (
+                        <X className="text-red-500 w-6 h-6" />
+                      )}
+                    </span>
+                  )}
+                </div>
 
-          {/* Info Fields */}
-          <div className="grid grid-cols-2 gap-4 mb-8 p-6 bg-slate-50 rounded-lg">
-            <div>
-              <label className="font-bold text-slate-700">Nom :</label>
-              <span className="ml-2 text-slate-400">_______________________</span>
-            </div>
-            <div>
-              <label className="font-bold text-slate-700">Date :</label>
-              <span className="ml-2 text-slate-400">_______________________</span>
-            </div>
-          </div>
+                {/* Word Display */}
+                <div className="bg-gray-50 rounded-lg p-8 mb-6 text-center">
+                  <p 
+                    className="text-5xl font-normal"
+                    style={{ fontFamily: exercise.font }}
+                  >
+                    {exercise.text}
+                  </p>
+                </div>
 
-          {/* Instructions */}
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 rounded">
-            <p className="text-slate-700">
-              <strong className="text-yellow-800">Consigne :</strong> Observez attentivement chaque mot ci-dessous. 
-              Cochez la case correspondant à la police de caractères utilisée.
-            </p>
-          </div>
+                {/* Dropdown Selection */}
+                <select
+                  value={answers[exercise.id] || ""}
+                  onChange={(e) => handleAnswerChange(exercise.id, e.target.value)}
+                  disabled={showResults}
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 text-gray-700 bg-white disabled:bg-gray-100"
+                >
+                  <option value="">Sélectionnez une police...</option>
+                  {fontOptions.map((font) => (
+                    <option key={font} value={font}>
+                      {font}
+                    </option>
+                  ))}
+                </select>
 
-          {/* Exercise Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            {/* Mot 1 */}
-            <div className="border-2 border-slate-300 rounded-xl p-6 bg-slate-50">
-              <div className="bg-indigo-600 text-white px-4 py-2 rounded-full inline-block font-bold mb-4">
-                Mot 1
+                {showResults && answers[exercise.id] !== exercise.correctAnswer && (
+                  <p className="mt-3 text-sm text-green-600 font-medium">
+                    Correct : {exercise.correctAnswer}
+                  </p>
+                )}
               </div>
-              
-              <div className="bg-white border-2 border-slate-300 rounded-lg p-8 text-center mb-6">
-                <p className="text-6xl" style={{ fontFamily: 'Times New Roman, serif' }}>
-                  Design
+            ))}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex justify-center gap-4">
+            {!showResults ? (
+              <button
+                onClick={checkAnswers}
+                disabled={Object.keys(answers).length !== exercises.length}
+                className="px-8 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed shadow-lg"
+              >
+                Vérifier mes réponses
+              </button>
+            ) : (
+              <button
+                onClick={resetExercise}
+                className="px-8 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors shadow-lg"
+              >
+                Recommencer l'exercice
+              </button>
+            )}
+          </div>
+
+          {/* Results Summary */}
+          {showResults && (
+            <div className="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl">
+              <h3 className="text-xl font-bold text-gray-800 mb-2">Résultat</h3>
+              <p className="text-lg text-gray-700">
+                Score : {Object.keys(answers).filter(id => answers[id] === exercises.find(e => e.id === parseInt(id)).correctAnswer).length} / {exercises.length}
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Reference Legend */}
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <h3 className="text-xl font-bold text-gray-800 mb-4">
+            Liste des polices disponibles
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {fontOptions.map((font) => (
+              <div key={font} className="p-3 bg-gray-50 rounded-lg">
+                <p className="text-sm text-gray-600 mb-1">{font}</p>
+                <p className="text-xl" style={{ fontFamily: font }}>
+                  Exemple
                 </p>
               </div>
-
-              <div className="space-y-3">
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Times New Roman</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Arial</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Garamond</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Helvetica</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Mot 2 */}
-            <div className="border-2 border-slate-300 rounded-xl p-6 bg-slate-50">
-              <div className="bg-indigo-600 text-white px-4 py-2 rounded-full inline-block font-bold mb-4">
-                Mot 2
-              </div>
-              
-              <div className="bg-white border-2 border-slate-300 rounded-lg p-8 text-center mb-6">
-                <p className="text-6xl" style={{ fontFamily: 'Arial, sans-serif' }}>
-                  Créativité
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Times New Roman</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Arial</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Garamond</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Helvetica</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Mot 3 */}
-            <div className="border-2 border-slate-300 rounded-xl p-6 bg-slate-50">
-              <div className="bg-indigo-600 text-white px-4 py-2 rounded-full inline-block font-bold mb-4">
-                Mot 3
-              </div>
-              
-              <div className="bg-white border-2 border-slate-300 rounded-lg p-8 text-center mb-6">
-                <p className="text-6xl" style={{ fontFamily: 'Georgia, serif' }}>
-                  Typography
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Times New Roman</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Arial</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Garamond</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Helvetica</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Mot 4 */}
-            <div className="border-2 border-slate-300 rounded-xl p-6 bg-slate-50">
-              <div className="bg-indigo-600 text-white px-4 py-2 rounded-full inline-block font-bold mb-4">
-                Mot 4
-              </div>
-              
-              <div className="bg-white border-2 border-slate-300 rounded-lg p-8 text-center mb-6">
-                <p className="text-6xl" style={{ fontFamily: 'Verdana, sans-serif' }}>
-                  Modernité
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Times New Roman</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Arial</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Garamond</span>
-                </div>
-                <div className="flex items-center p-3 border border-slate-300 rounded hover:bg-slate-100">
-                  <div className="w-5 h-5 border-2 border-slate-700 rounded mr-3"></div>
-                  <span className="text-slate-700">Helvetica</span>
-                </div>
-              </div>
-            </div>
-
+            ))}
           </div>
-
-          {/* Reference Section */}
-          <div className="mt-10 p-6 bg-indigo-50 rounded-xl border-2 border-indigo-200">
-            <h3 className="text-xl font-bold text-indigo-800 mb-4 text-center">
-              Liste des polices disponibles
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="p-3 bg-white rounded border border-indigo-200 text-center">
-                <p className="text-sm text-slate-600 mb-1">Times New Roman</p>
-                <p className="text-2xl" style={{ fontFamily: 'Times New Roman, serif' }}>Aa</p>
-              </div>
-              <div className="p-3 bg-white rounded border border-indigo-200 text-center">
-                <p className="text-sm text-slate-600 mb-1">Arial</p>
-                <p className="text-2xl" style={{ fontFamily: 'Arial, sans-serif' }}>Aa</p>
-              </div>
-              <div className="p-3 bg-white rounded border border-indigo-200 text-center">
-                <p className="text-sm text-slate-600 mb-1">Garamond</p>
-                <p className="text-2xl" style={{ fontFamily: 'Garamond, serif' }}>Aa</p>
-              </div>
-              <div className="p-3 bg-white rounded border border-indigo-200 text-center">
-                <p className="text-sm text-slate-600 mb-1">Helvetica</p>
-                <p className="text-2xl" style={{ fontFamily: 'Helvetica, sans-serif' }}>Aa</p>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
   );
 };
 
-export default TypographyExerciseMockup;
+export default TypographyExercise;

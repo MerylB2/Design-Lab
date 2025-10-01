@@ -84,12 +84,12 @@ const HomePage = ({ setCurrentPage }) => {
       <div className="bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-2xl shadow-xl p-12 text-white">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div>
-            <div className="text-5xl font-bold mb-2">6</div>
+            <div className="text-5xl font-bold mb-2">~100</div>
             <p className="text-violet-100">Exercices pratiques</p>
           </div>
           <div>
             <div className="text-5xl font-bold mb-2">3</div>
-            <p className="text-violet-100">Thématiques principales</p>
+            <p className="text-violet-100">Thématiques principales (pour l'instant)</p>
           </div>
           <div>
             <div className="text-5xl font-bold mb-2">∞</div>
