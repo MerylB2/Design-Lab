@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import ExerciceRouter from './components/ExerciceRouter';
 import HomePage from './pages/HomePage';
 import TypographiePage from './pages/TypographiePage';
 import CouleurPage from './pages/CouleurPage';
@@ -10,6 +11,17 @@ import RessourcesPage from './pages/RessourcesPage';
 const SiteDesignGraphique = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentExercice, setCurrentExercice] = useState(null);
+
+  // Si un exercice est sélectionné, afficher l'exercice
+  if (currentExercice) {
+    return (
+      <ExerciceRouter 
+        exerciceId={currentExercice} 
+        onClose={() => setCurrentExercice(null)} 
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -26,11 +38,11 @@ const SiteDesignGraphique = () => {
         
         {currentPage === 'home' && <HomePage setCurrentPage={setCurrentPage} />}
 
-        {currentPage === 'typo' && <TypographiePage />}
+        {currentPage === 'typo' && <TypographiePage setCurrentExercice={setCurrentExercice} />}
 
-        {currentPage === 'couleur' && <CouleurPage />}
+        {currentPage === 'couleur' && <CouleurPage setCurrentExercice={setCurrentExercice} />}
 
-        {currentPage === 'projets' && <ProjetsPage />}
+        {currentPage === 'projets' && <ProjetsPage setCurrentExercice={setCurrentExercice} />}
 
         {currentPage === 'ressources' && <RessourcesPage />}
 

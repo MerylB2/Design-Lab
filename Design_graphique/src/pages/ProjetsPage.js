@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layers } from 'lucide-react';
 
-const ProjetsPage = () => {
+const ProjetsPage = ({ setCurrentExercice }) => {
   return (
     <div>
       <div className="mb-12">
@@ -44,7 +44,10 @@ const ProjetsPage = () => {
             </div>
           </div>
 
-          <button className="w-full bg-gradient-to-r from-purple-600 to-violet-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+          <button 
+            onClick={() => setCurrentExercice('projet1')}
+            className="w-full bg-gradient-to-r from-purple-600 to-violet-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all"
+          >
             Commencer le projet
           </button>
         </div>

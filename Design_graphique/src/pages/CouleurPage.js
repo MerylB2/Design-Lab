@@ -2,7 +2,7 @@ import React from 'react';
 import { Palette } from 'lucide-react';
 import { exercices } from '../data/exercices';
 
-const CouleurPage = () => {
+const CouleurPage = ({ setCurrentExercice }) => {
   return (
     <div>
       <div className="mb-12">
@@ -39,7 +39,10 @@ const CouleurPage = () => {
                   </div>
                 </div>
               </div>
-              <button className="w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+              <button 
+                onClick={() => setCurrentExercice(exercice.id)}
+                className="w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all"
+              >
                 Accéder à l'exercice
               </button>
             </div>
