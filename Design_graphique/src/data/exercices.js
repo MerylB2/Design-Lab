@@ -54,5 +54,21 @@ export const exercices = {
       niveau: 'Avancé',
       duree: '60 min'
     }
+  ],
+  projets: [
+    {
+      id: 'projet1',
+      title: 'Projet 1 : Refonte colorimétrique',
+      description: 'Proposer une nouvelle palette de couleurs pour une interface existante',
+      niveau: 'Intermédiaire',
+      duree: '2h'
+    },
+    {
+      id: 'projetFinal',
+      title: 'Projet Final S1 : Mini-application + UI simple',
+      description: 'Cahier des charges complet pour le projet de synthèse du semestre',
+      niveau: 'Avancé',
+      duree: '6-8 semaines'
+    }
   ]
 };

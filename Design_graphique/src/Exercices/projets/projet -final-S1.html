@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cahier des Charges - Module PRJ101</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6B9BD1;
+            --secondary: #A8D5BA;
+            --accent: #F4A5AE;
+            --bg-main: #F8F9FA;
+            --bg-card: #FFFFFF;
+            --text-primary: #2C3E50;
+            --text-secondary: #5D6D7E;
+            --border: #E8EEF2;
+            --success: #7FB685;
+            --warning: #F0B67F;
+            --info: #89B9D9;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f7 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #5A88C0 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav-menu {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px var(--shadow);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .nav-menu h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 20px;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        /* Section */
+        .section {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px var(--shadow);
+            scroll-margin-top: 100px;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before {
+            content: "📋";
+            font-size: 2rem;
+        }
+
+        .section h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .section h4 {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .card {
+            background: var(--bg-main);
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .card-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .card-content {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #E8F4FD 0%, #D4E9F7 100%);
+            border-left: 5px solid var(--info);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #D4E9D7 100%);
+            border-left: 5px solid var(--success);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+            border-left: 5px solid var(--warning);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        li strong {
+            color: var(--text-primary);
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--primary) 0%, #5A88C0 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr:hover {
+            background: var(--bg-main);
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: #2C3E50;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 5px;
+        }
+
+        .tag-module {
+            background: var(--info);
+            color: white;
+        }
+
+        .tag-priority {
+            background: var(--accent);
+            color: white;
+        }
+
+        .tag-status {
+            background: var(--success);
+            color: white;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: var(--bg-main);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .checklist li:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .checklist li::before {
+            content: "□ ";
+            font-size: 1.2rem;
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .nav-links {
+                grid-template-columns: 1fr;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            background: var(--bg-main);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            transition: width 0.5s ease;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px var(--shadow);
+        }
+
+        .accordion-header {
+            background: var(--primary);
+            color: white;
+            padding: 18px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header:hover {
+            background: #5A88C0;
+        }
+
+        .accordion-content {
+            background: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 20px;
+            max-height: 2000px;
+        }
+
+        /* Floating action button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, #5A88C0 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px var(--shadow);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px var(--shadow);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📚 Cahier des Charges - Module PRJ101</h1>
+            <p>Projet S1 : Mini-application + UI simple</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-menu">
+            <h3>📑 Table des matières</h3>
+            <div class="nav-links">
+                <a href="#contexte" class="nav-link">🎯 Contexte</a>
+                <a href="#specifications" class="nav-link">📝 Spécifications</a>
+                <a href="#competences" class="nav-link">💡 Compétences</a>
+                <a href="#cadrage" class="nav-link">🎨 Cadrage</a>
+                <a href="#livrables" class="nav-link">📦 Livrables</a>
+                <a href="#evaluation" class="nav-link">⭐ Évaluation</a>
+                <a href="#contraintes" class="nav-link">⚖️ Contraintes</a>
+                <a href="#conseils" class="nav-link">💪 Conseils</a>
+                <a href="#securite" class="nav-link">🔒 Sécurité</a>
+                <a href="#presentation" class="nav-link">🎤 Présentation</a>
+            </div>
+        </div>
+
+        <!-- Section 1: Contexte -->
+        <section id="contexte" class="section">
+            <h2 class="section-title">Contexte et Objectifs</h2>
+            
+            <h3>1.1 Contexte pédagogique</h3>
+            <p>Le module PRJ101 constitue le projet de synthèse du premier semestre (S1). Il permet aux étudiants de mobiliser et d'intégrer l'ensemble des compétences acquises dans les modules techniques du semestre.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">🎯 Objectif principal</div>
+                    <div class="card-content">Développer une application complète de bout en bout en mobilisant tous les modules techniques</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">⏱️ Durée</div>
+                    <div class="card-content">6-8 semaines<br>30-50 heures de travail</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">👥 Modalité</div>
+                    <div class="card-content">Travail individuel ou en binôme selon directives</div>
+                </div>
+            </div>
+
+            <h3>1.2 Modules concernés</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Module</th>
+                            <th>Application dans PRJ101</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="tag tag-module">TC101</span></td>
+                            <td>Algorithmique & Programmation (Python/JS)</td>
+                            <td>Développement backend et logique applicative</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-module">TC102</span></td>
+                            <td>Bases de données SQL</td>
+                            <td>Conception et administration de la BDD</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-module">TC103</span></td>
+                            <td>Réseaux & Systèmes (Linux, TCP/IP)</td>
+                            <td>Déploiement sur environnement Linux</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-module">TC104</span></td>
+                            <td>Design graphique & UI</td>
+                            <td>Conception et réalisation de l'interface</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-module">TC106</span></td>
+                            <td>Anglais technique</td>
+                            <td>Documentation et présentation en anglais</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-module">TC107</span></td>
+                            <td>Soft Skills (organisation, créativité)</td>
+                            <td>Gestion de projet et innovation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 2: Référentiel de compétences -->
+        <section id="competences" class="section">
+            <h2 class="section-title">Référentiel de Compétences</h2>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>💻 Développement & Systèmes</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <h4>Connaissances</h4>
+                    <ul>
+                        <li>Algorithmique et structures de données</li>
+                        <li>Bases de données relationnelles</li>
+                        <li>Programmation web/mobile (Python/JavaScript)</li>
+                        <li>Réseaux et systèmes (Linux, TCP/IP)</li>
+                    </ul>
+                    <h4>Savoir-faire</h4>
+                    <ul>
+                        <li>Développer une application simple et fonctionnelle</li>
+                        <li>Administrer une base de données SQL</li>
+                        <li>Configurer un réseau local et environnement système</li>
+                        <li>Prototyper une interface utilisateur</li>
+                    </ul>
+                    <div class="success-box">
+                        <strong>Savoir-être :</strong> Rigueur, esprit analytique, autonomie
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🔒 Cybersécurité & RGPD</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <h4>Connaissances</h4>
+                    <ul>
+                        <li>Principes de sécurité informatique</li>
+                        <li>Cryptographie de base</li>
+                        <li>Législation RGPD et protection des données</li>
+                    </ul>
+                    <h4>Savoir-faire</h4>
+                    <ul>
+                        <li>Identifier les vulnérabilités potentielles</li>
+                        <li>Appliquer les bonnes pratiques SSI</li>
+                        <li>Intégrer la sécurité dès le développement</li>
+                        <li>Implémenter les droits utilisateurs RGPD</li>
+                    </ul>
+                    <div class="success-box">
+                        <strong>Savoir-être :</strong> Esprit critique, sens des responsabilités, éthique
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🎨 Design & UX/UI</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <h4>Connaissances</h4>
+                    <ul>
+                        <li>Bases du design graphique</li>
+                        <li>Principes d'ergonomie</li>
+                        <li>Psychologie de l'utilisateur</li>
+                        <li>Méthodologies de conception centrée utilisateur</li>
+                    </ul>
+                    <h4>Savoir-faire</h4>
+                    <ul>
+                        <li>Concevoir des maquettes (wireframes, mockups)</li>
+                        <li>Tester un prototype</li>
+                        <li>Améliorer l'expérience utilisateur</li>
+                        <li>Créer une interface cohérente et accessible</li>
+                    </ul>
+                    <div class="success-box">
+                        <strong>Savoir-être :</strong> Créativité, écoute, sens du détail
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Spécifications techniques -->
+        <section id="specifications" class="section">
+            <h2 class="section-title">Spécifications Techniques</h2>
+
+            <h3>2.1 Technologies obligatoires</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">💻 Backend</div>
+                    <div class="card-content">
+                        <strong>Python 3.8+</strong> OU <strong>JavaScript (Node.js 14+)</strong>
+                        <br><br>
+                        Frameworks : Flask, Django, Express.js
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🗄️ Base de données</div>
+                    <div class="card-content">
+                        <strong>SQL obligatoire</strong>
+                        <br><br>
+                        MySQL 8.0+ / PostgreSQL 12+ / SQLite 3
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🎨 Frontend</div>
+                    <div class="card-content">
+                        <strong>HTML5 + CSS3 + JavaScript</strong>
+                        <br><br>
+                        Frameworks optionnels : Bootstrap, Tailwind
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🐧 Système</div>
+                    <div class="card-content">
+                        <strong>Linux</strong>
+                        <br><br>
+                        Ubuntu 20.04+ / Debian / CentOS
+                    </div>
+                </div>
+            </div>
+
+            <h3>2.2 Fonctionnalités minimales requises</h3>
+            <ul class="checklist">
+                <li>Système d'authentification (inscription, connexion) OU gestion multi-utilisateurs</li>
+                <li>Opérations CRUD complètes sur au moins 2 entités principales</li>
+                <li>Système de recherche/filtrage avec minimum 2 critères</li>
+                <li>Visualisation de données (graphique ou statistiques)</li>
+                <li>Au moins 1 fonctionnalité avancée (export, API, notifications, etc.)</li>
+                <li>Base de données avec minimum 3 tables relationnelles</li>
+                <li>Interface responsive (mobile et desktop)</li>
+                <li>Sécurité : hachage mots de passe, protection SQL injection/XSS</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>💡 Conseil :</strong> Commencez par un MVP (Minimum Viable Product) avec les fonctionnalités essentielles, puis ajoutez des fonctionnalités bonus si le temps le permet.
+            </div>
+        </section>
+
+        <!-- Section 4: Cadrage du projet -->
+        <section id="cadrage" class="section">
+            <h2 class="section-title">Cadrage du Projet</h2>
+
+            <h3>3.1 Types d'applications suggérés</h3>
+            
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>📊 Applications de gestion</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Gestionnaire de tâches avancé :</strong> To-do list avec catégories, priorités, sous-tâches, statistiques</li>
+                        <li><strong>Bibliothèque personnelle :</strong> Gestion de livres, films, musique avec recherche et statistiques</li>
+                        <li><strong>Gestionnaire de budget :</strong> Suivi revenus/dépenses, catégories, graphiques, objectifs d'épargne</li>
+                        <li><strong>Carnet d'adresses intelligent :</strong> Contacts avec historique d'interactions, rappels, groupes</li>
+                        <li><strong>Système de réservation :</strong> Gestion de ressources (salles, matériel) avec calendrier</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🛠️ Applications utilitaires</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Calculatrice avancée :</strong> Opérations complexes, historique, grapheur de fonctions</li>
+                        <li><strong>Convertisseur universel :</strong> Devises, unités, formats avec API temps réel</li>
+                        <li><strong>Gestionnaire de mots de passe :</strong> Génération sécurisée, stockage chiffré, évaluation de force</li>
+                        <li><strong>Outil de prise de notes :</strong> Markdown, organisation par tags, recherche, export</li>
+                        <li><strong>Chronomètre/Pomodoro :</strong> Multitâche, statistiques, technique Pomodoro</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🎮 Applications ludiques/éducatives</span>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Plateforme de quiz :</strong> Création de quiz, catégories, scores, classements</li>
+                        <li><strong>Jeu éducatif :</strong> Mathématiques, langues avec progression et badges</li>
+                        <li><strong>Flashcards (répétition espacée) :</strong> Algorithme Leitner, statistiques d'apprentissage</li>
+                        <li><strong>Générateur créatif :</strong> Histoires, noms, poèmes avec paramètres personnalisables</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>3.2 Complexité attendue</h3>
+            <div class="warning-box">
+                <strong>⚠️ Important :</strong> Le projet doit être "simple" mais complet :
+                <ul style="margin-top: 10px;">
+                    <li>5-8 fonctionnalités principales maximum</li>
+                    <li>3 à 6 tables en base de données</li>
+                    <li>Application mono-page ou 3-4 pages maximum</li>
+                    <li>30-50 heures de développement estimé</li>
+                </ul>
+            </div>
+
+            <div class="success-box">
+                <strong>✅ Principe clé :</strong> Mieux vaut 5 fonctionnalités excellentes qu'une application ambitieuse inachevée !
+            </div>
+        </section>
+
+        <!-- Section 5: Livrables -->
+        <section id="livrables" class="section">
+            <h2 class="section-title">Livrables Finaux</h2>
+
+            <h3>4.1 Livrables techniques</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">💾 Code source</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Repository Git complet</li>
+                            <li>Code commenté et structuré</li>
+                            <li>Requirements.txt / package.json</li>
+                            <li>.gitignore configuré</li>
+                            <li>Historique de commits cohérent</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">🗄️ Base de données</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>MCD ou schéma relationnel</li>
+                            <li>Scripts SQL (création, population)</li>
+                            <li>Dictionnaire de données</li>
+                            <li>Données de démonstration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">📚 Documentation</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>README.md en anglais</li>
+                            <li>Guide d'installation Linux</li>
+                            <li>Documentation technique</li>
+                            <li>Manuel utilisateur</li>
+                            <li>Architecture documentée</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">🐧 Déploiement</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Scripts d'installation</li>
+                            <li>Scripts de démarrage/arrêt</li>
+                            <li>Configuration système</li>
+                            <li>Guide de troubleshooting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>4.2 Gestion de projet</h3>
+            <ul class="checklist">
+                <li>Spécifications fonctionnelles détaillées</li>
+                <li>Planning prévisionnel vs réel (Gantt ou Kanban)</li>
+                <li>Journal de bord hebdomadaire complet</li>
+                <li>Difficultés rencontrées et solutions apportées</li>
+                <li>Méthodologie adoptée (Agile, Scrum, etc.)</li>
+                <li>Analyse des risques et mitigation</li>
+            </ul>
+
+            <h3>4.3 Présentation finale</h3>
+            <div class="info-box">
+                <strong>Format :</strong> 15-20 minutes de présentation + 5-10 minutes de questions
+                <br><br>
+                <strong>Contenu requis :</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Contexte et objectifs du projet</li>
+                    <li>Démonstration live de l'application</li>
+                    <li>Présentation technique (architecture, choix)</li>
+                    <li>Section de 5 minutes en anglais</li>
+                    <li>Retour d'expérience et apprentissages</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 6: Évaluation -->
+        <section id="evaluation" class="section">
+            <h2 class="section-title">Critères d'Évaluation</h2>
+
+            <h3>5.1 Grille de notation (sur 100 points)</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Critère</th>
+                            <th>Pondération</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fonctionnalité et complétude</strong></td>
+                            <td>25%</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Application opérationnelle</td>
+                            <td></td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Fonctionnalités implémentées</td>
+                            <td></td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Robustesse et gestion erreurs</td>
+                            <td></td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Qualité technique</strong></td>
+                            <td>30%</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Code (Python/JS)</td>
+                            <td></td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Base de données</td>
+                            <td></td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Architecture et déploiement Linux</td>
+                            <td></td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Interface utilisateur (UI/UX)</strong></td>
+                            <td>15%</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Design et ergonomie</td>
+                            <td></td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Facilité d'utilisation</td>
+                            <td></td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Documentation</strong></td>
+                            <td>15%</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Documentation technique</td>
+                            <td></td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Documentation utilisateur</td>
+                            <td></td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Anglais technique</td>
+                            <td></td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gestion de projet</strong></td>
+                            <td>10%</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Organisation et planification</td>
+                            <td></td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Créativité et originalité</td>
+                            <td></td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Présentation</strong></td>
+                            <td>5%</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Clarté et structure</td>
+                            <td></td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 30px;">- Démonstration</td>
+                            <td></td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>5.2 Niveaux de performance</h3>
+            <div class="card-grid">
+                <div class="card" style="border-left-color: #7FB685;">
+                    <div class="card-title" style="color: #7FB685;">⭐ Excellent (90-100%)</div>
+                    <div class="card-content">
+                        Application complète, robuste, code exemplaire, documentation exhaustive, créativité marquée, présentation captivante
+                    </div>
+                </div>
+                <div class="card" style="border-left-color: #89B9D9;">
+                    <div class="card-title" style="color: #89B9D9;">✅ Très bien (80-89%)</div>
+                    <div class="card-content">
+                        Application fonctionnelle, code de bonne qualité, documentation complète, organisation efficace
+                    </div>
+                </div>
+                <div class="card" style="border-left-color: #F0B67F;">
+                    <div class="card-title" style="color: #F0B67F;">👍 Bien (70-79%)</div>
+                    <div class="card-content">
+                        Application opérationnelle, code correct, documentation suffisante, gestion satisfaisante
+                    </div>
+                </div>
+                <div class="card" style="border-left-color: #F4A5AE;">
+                    <div class="card-title" style="color: #F4A5AE;">⚠️ Satisfaisant (60-69%)</div>
+                    <div class="card-content">
+                        Application avec bugs mineurs, code fonctionnel mais perfectible, documentation incomplète
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <strong>💎 Points bonus :</strong> Tests unitaires (+3%), CI/CD (+2%), Docker (+2%), API REST documentée (+2%), Accessibilité avancée (+2%)
+                <br><br>
+                <em>Maximum +10% de bonus sur la note finale</em>
+            </div>
+        </section>
+
+        <!-- Section 7: Contraintes -->
+        <section id="contraintes" class="section">
+            <h2 class="section-title">Contraintes et Modalités</h2>
+
+            <h3>6.1 Planning et jalons</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Semaine</th>
+                            <th>Phase</th>
+                            <th>Objectifs</th>
+                            <th>Livrable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>S1</strong></td>
+                            <td>Conception</td>
+                            <td>Analyse besoins, MCD, wireframes</td>
+                            <td><span class="tag tag-status">Specs validées</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>S2</strong></td>
+                            <td>Setup</td>
+                            <td>Config environnement, BDD, structure</td>
+                            <td><span class="tag tag-status">Projet initialisé</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>S3-4</strong></td>
+                            <td>Développement</td>
+                            <td>CRUD, interface basique</td>
+                            <td><span class="tag tag-status">MVP fonctionnel</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>S5</strong></td>
+                            <td>Fonctionnalités</td>
+                            <td>Fonctionnalités avancées</td>
+                            <td><span class="tag tag-status">Version beta</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>S6</strong></td>
+                            <td>Sécurité & Tests</td>
+                            <td>Sécurité, RGPD, corrections</td>
+                            <td><span class="tag tag-status">Version RC</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>S7</strong></td>
+                            <td>Documentation</td>
+                            <td>Docs, polissage, déploiement</td>
+                            <td><span class="tag tag-status">Version finale</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>S8</strong></td>
+                            <td>Présentation</td>
+                            <td>Préparation soutenance</td>
+                            <td><span class="tag tag-status">Soutenance</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>6.2 Jalons obligatoires</h3>
+            <div class="info-box">
+                <strong>📅 Jalon 1 (Fin S2) :</strong> Validation du sujet et spécifications (15-20 min avec encadrant)
+                <br><br>
+                <strong>📅 Jalon 2 (Fin S4) :</strong> Démonstration MVP fonctionnel (20-30 min)
+                <br><br>
+                <strong>📅 Jalon 3 (Fin S6) :</strong> Version beta complète (20-30 min)
+                <br><br>
+                <strong>📅 Deadline finale (S8) :</strong> Livraison complète + Soutenance
+            </div>
+
+            <h3>6.3 Règles d'intégrité académique</h3>
+            <div class="success-box">
+                <strong>✅ Autorisé :</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Documentation officielle et tutoriels</li>
+                    <li>Stack Overflow et forums (comprendre et adapter)</li>
+                    <li>Bibliothèques open-source</li>
+                    <li>Aide entre étudiants (pair programming)</li>
+                    <li>IA comme assistant (ChatGPT, Claude) mais le code doit être compris</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <strong>❌ Interdit :</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Copie de projets existants</li>
+                    <li>Plagiat de code sans attribution</li>
+                    <li>Templates "tout fait" couvrant >50% du projet</li>
+                    <li>Code généré par IA non compris</li>
+                    <li>Faire réaliser le projet par quelqu'un d'autre</li>
+                </ul>
+                <br>
+                <strong>⚖️ Sanction :</strong> Note de 0/20 pour plagiat avéré + mesures disciplinaires
+            </div>
+        </section>
+
+        <!-- Section 8: Conseils -->
+        <section id="conseils" class="section">
+            <h2 class="section-title">Conseils Pratiques</h2>
+
+            <h3>7.1 Stratégie de réussite</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">🎯 Choix du projet</div>
+                    <div class="card-content">
+                        Choisir un sujet qui vous <strong>passionne</strong>, avec un <strong>équilibre</strong> entre complexité et faisabilité. Privilégier 5 fonctionnalités excellentes plutôt que 10 médiocres.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">📐 Conception d'abord</div>
+                    <div class="card-content">
+                        Passer 10-15% du temps sur la <strong>conception</strong> (MCD, wireframes, specs). Ne pas commencer à coder sans plan clair.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🔄 Développement itératif</div>
+                    <div class="card-content">
+                        Créer un <strong>MVP minimal</strong> qui fonctionne, puis ajouter des fonctionnalités progressivement. Tester régulièrement.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">📝 Documenter au fil de l'eau</div>
+                    <div class="card-content">
+                        <strong>Documenter en continu</strong>, pas à la fin. Journal de bord hebdomadaire, commentaires de code au fur et à mesure.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">💾 Git régulièrement</div>
+                    <div class="card-content">
+                        <strong>Commits fréquents</strong> (2-3 par semaine minimum) avec messages clairs. Le Git sauve des vies !
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🆘 Demander de l'aide</div>
+                    <div class="card-content">
+                        Ne pas rester bloqué plus de <strong>30 minutes</strong>. Consulter la doc, forums, ou contacter l'encadrant.
+                    </div>
+                </div>
+            </div>
+
+            <h3>7.2 Pièges à éviter</h3>
+            <div class="warning-box">
+                <strong>⚠️ Syndrome de l'ambition excessive :</strong> Vouloir créer "le prochain Facebook". Rester réaliste !
+                <br><br>
+                <strong>⚠️ Technologies trop complexes :</strong> Apprendre un nouveau framework difficile pendant le projet. Rester dans sa zone de confort + 1 nouveauté max.
+                <br><br>
+                <strong>⚠️ Perfectionnisme paralysant :</strong> Refaire le design 10 fois. "Done is better than perfect" pour le MVP.
+                <br><br>
+                <strong>⚠️ Documentation reportée :</strong> Laisser la doc pour la fin = documentation bâclée garantie.
+                <br><br>
+                <strong>⚠️ Pas de tests :</strong> Tester uniquement à la fin = découvrir 50 bugs la veille de la deadline.
+            </div>
+
+            <h3>7.3 Gestion du temps</h3>
+            <div class="info-box">
+                <strong>🍅 Technique Pomodoro :</strong> 25 min de travail concentré + 5 min de pause
+                <br><br>
+                <strong>📦 Time-boxing :</strong> Allouer un temps maximum par tâche pour éviter de se perdre dans les détails
+                <br><br>
+                <strong>🎯 Priorisation MoSCoW :</strong> Must have / Should have / Could have / Won't have
+                <br><br>
+                <strong>⏱️ Règle des 2 minutes :</strong> Tâche < 2 min = faire immédiatement, sinon planifier
+            </div>
+
+            <div class="success-box">
+                <strong>💡 Conseil d'or :</strong> Prévoir 20% de temps supplémentaire pour les imprévus. Si vous estimez 40h, bloquez 48h dans votre planning !
+            </div>
+        </section>
+
+        <!-- Section 9: Sécurité -->
+        <section id="securite" class="section">
+            <h2 class="section-title">Sécurité et RGPD</h2>
+
+            <h3>8.1 Checklist de sécurité obligatoire</h3>
+            <ul class="checklist">
+                <li>Mots de passe HACHÉS avec bcrypt (jamais en clair)</li>
+                <li>Protection contre les injections SQL (requêtes préparées/ORM)</li>
+                <li>Protection contre XSS (échappement automatique des templates)</li>
+                <li>Protection CSRF (tokens dans les formulaires)</li>
+                <li>Validation des entrées côté serveur</li>
+                <li>Pas de credentials en dur dans le code (utiliser .env)</li>
+                <li>Sessions sécurisées avec timeout</li>
+                <li>Limitation des tentatives de connexion</li>
+            </ul>
+
+            <h3>8.2 Exemple : Hachage de mot de passe</h3>
+            <div class="code-block">
+# Python avec bcrypt
+from flask_bcrypt import Bcrypt
+
+bcrypt = Bcrypt(app)
+
+# Inscription
+hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+user = User(username=username, password=hashed_password)
+
+# Connexion
+if user and bcrypt.check_password_hash(user.password, password):
+    session['user_id'] = user.id
+    return redirect('/dashboard')
+            </div>
+
+            <h3>8.3 Conformité RGPD</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">📜 Politique de confidentialité</div>
+                    <div class="card-content">
+                        Page accessible détaillant les données collectées, leur utilisation, la durée de conservation
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">✅ Consentement explicite</div>
+                    <div class="card-content">
+                        Cases à cocher lors de l'inscription pour accepter les conditions et le traitement des données
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">👤 Droits utilisateurs</div>
+                    <div class="card-content">
+                        <strong>Accès :</strong> voir ses données<br>
+                        <strong>Rectification :</strong> modifier<br>
+                        <strong>Effacement :</strong> supprimer<br>
+                        <strong>Portabilité :</strong> exporter
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🔒 Minimisation</div>
+                    <div class="card-content">
+                        Collecter uniquement les données strictement nécessaires au fonctionnement de l'application
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Important :</strong> La sécurité et le RGPD sont des critères d'évaluation. Une application non sécurisée ou non conforme sera pénalisée, même si elle est fonctionnelle.
+            </div>
+        </section>
+
+        <!-- Section 10: Présentation -->
+        <section id="presentation" class="section">
+            <h2 class="section-title">Préparation de la Présentation</h2>
+
+            <h3>9.1 Structure recommandée (15-20 min)</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Partie</th>
+                            <th>Durée</th>
+                            <th>Contenu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Introduction</strong></td>
+                            <td>2-3 min</td>
+                            <td>Contexte, problématique, objectifs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conception</strong></td>
+                            <td>2-3 min</td>
+                            <td>Besoins, architecture, choix techniques</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Démonstration</strong></td>
+                            <td>5-7 min</td>
+                            <td>Demo live des fonctionnalités principales</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Technique</strong></td>
+                            <td>3-5 min</td>
+                            <td>Code, BDD, sécurité, déploiement</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Section anglais</strong></td>
+                            <td>5 min</td>
+                            <td>Présentation d'une fonctionnalité en anglais</td>
+                        </tr>
+                        <tr>
+                            <td><strong>REX</strong></td>
+                            <td>2-3 min</td>
+                            <td>Difficultés, apprentissages, évolutions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>9.2 Scénario de démonstration optimal</h3>
+            <div class="success-box">
+                <strong>Minute 1 :</strong> Connexion rapide avec compte de démo
+                <br><br>
+                <strong>Minutes 2-3 :</strong> Démonstration de la fonctionnalité principale (ajout d'élément, validation, résultat)
+                <br><br>
+                <strong>Minutes 4-5 :</strong> Fonctionnalités secondaires (recherche, filtres, statistiques)
+                <br><br>
+                <strong>Minute 6 :</strong> Points forts techniques (responsive, gestion erreurs, sécurité)
+                <br><br>
+                <strong>Minute 7 :</strong> Récapitulatif rapide
+            </div>
+
+            <h3>9.3 Checklist J-7</h3>
+            <ul class="checklist">
+                <li>Application complètement fonctionnelle testée</li>
+                <li>Slides créés (15-20 slides maximum)</li>
+                <li>Scénario de démo préparé et répété 3 fois</li>
+                <li>Section en anglais rédigée et répétée</li>
+                <li>Plan B en cas de bug (vidéo de backup)</li>
+                <li>Questions potentielles anticipées</li>
+                <li>Matériel vérifié (laptop, adaptateurs, chargeur)</li>
+                <li>Données de démo cohérentes et réalistes</li>
+            </ul>
+
+            <h3>9.4 Gestion des questions difficiles</h3>
+            <div class="info-box">
+                <strong>Question : "Pourquoi cette technologie ?"</strong>
+                <br>✅ Réponse structurée : technologie choisie + raison adaptée au projet + alternative envisagée + lien avec apprentissages
+                <br><br>
+                <strong>Question : "Il y a un bug dans votre démo"</strong>
+                <br>✅ Rester calme, reconnaître le problème, proposer solution de continuité (vidéo backup), expliquer la méthodologie de débogage
+                <br><br>
+                <strong>Question : "Comment gérez-vous la sécurité ?"</strong>
+                <br>✅ Mentionner bcrypt, protection SQL injection, XSS, CSRF, validation serveur, références à la documentation fournie
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ À éviter absolument :</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Lire ses notes ou les slides</li>
+                    <li>S'excuser excessivement ("désolé c'est pas fini")</li>
+                    <li>Minimiser son travail</li>
+                    <li>Dépasser le temps imparti</li>
+                    <li>Paniquer en cas de bug</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section finale: Ressources -->
+        <section class="section">
+            <h2 class="section-title">Ressources Utiles</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">📚 Documentation</div>
+                    <div class="card-content">
+                        <strong>Python :</strong> docs.python.org<br>
+                        <strong>Flask :</strong> flask.palletsprojects.com<br>
+                        <strong>JavaScript :</strong> developer.mozilla.org<br>
+                        <strong>MySQL :</strong> dev.mysql.com/doc
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🎓 Tutoriels</div>
+                    <div class="card-content">
+                        <strong>freeCodeCamp</strong><br>
+                        <strong>The Odin Project</strong><br>
+                        <strong>OpenClassrooms</strong><br>
+                        <strong>SQLBolt (SQL interactif)</strong>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🛠️ Outils Design</div>
+                    <div class="card-content">
+                        <strong>Figma</strong> (maquettes)<br>
+                        <strong>Coolors.co</strong> (palettes)<br>
+                        <strong>Font Awesome</strong> (icônes)<br>
+                        <strong>Unsplash</strong> (images libres)
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">💬 Communautés</div>
+                    <div class="card-content">
+                        <strong>Stack Overflow</strong><br>
+                        <strong>Reddit</strong> (r/learnprogramming)<br>
+                        <strong>Dev.to</strong><br>
+                        <strong>Discord développeurs</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-box" style="margin-top: 30px;">
+                <h3 style="margin-bottom: 15px;">🎯 Message final</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    <strong>"Le succès de votre projet ne se mesure pas seulement à la note finale, mais surtout à ce que vous aurez appris en le réalisant."</strong>
+                </p>
+                <p style="margin-top: 15px;">
+                    Ce projet est avant tout une <strong>expérience d'apprentissage</strong>. Les difficultés rencontrées, les bugs résolus, les choix techniques constituent autant d'opportunités de progresser.
+                </p>
+                <p style="margin-top: 15px;">
+                    💡 <strong>Commencez tôt</strong> - Ne sous-estimez jamais le temps nécessaire<br>
+                    💡 <strong>Restez simple</strong> - Mieux vaut un projet simple bien fait qu'un projet ambitieux inachevé<br>
+                    💡 <strong>Documentez en continu</strong> - La documentation de dernière minute est toujours bâclée<br>
+                    💡 <strong>Testez régulièrement</strong> - Ne découvrez pas les bugs la veille de la deadline<br>
+                    💡 <strong>Prenez du plaisir</strong> - Choisissez un projet qui vous motive
+                </p>
+                <p style="margin-top: 20px; text-align: center; font-size: 1.3rem;">
+                    <strong>Bon courage pour votre projet ! 🚀</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div style="background: var(--primary); color: white; padding: 40px; text-align: center; border-radius: 15px; margin-top: 40px;">
+            <h3 style="margin-bottom: 15px;">📧 Besoin d'aide ?</h3>
+            <p style="margin-bottom: 20px;">N'hésitez pas à contacter votre encadrant ou à consulter le forum du cours</p>
+            <p style="opacity: 0.9; font-size: 0.9rem;">
+                Document version 1.0 - Cahier des charges PRJ101
+            </p>
+        </div>
+    </div>
+
+    <!-- Floating Action Button - Retour en haut -->
+    <div class="fab" onclick="scrollToTop()" title="Retour en haut">
+        ↑
+    </div>
+
+    <script>
+        // Smooth scroll pour les liens d'ancrage
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Toggle accordion
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('span:last-child');
+            
+            // Fermer tous les autres accordéons
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                if (item !== content && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    item.previousElementSibling.querySelector('span:last-child').textContent = '▼';
+                }
+            });
+            
+            // Toggle l'accordéon actuel
+            content.classList.toggle('active');
+            arrow.textContent = content.classList.contains('active') ? '▲' : '▼';
+        }
+
+        // Retour en haut
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Afficher/masquer le bouton FAB selon le scroll
+        window.addEventListener('scroll', () => {
+            const fab = document.querySelector('.fab');
+            if (window.pageYOffset > 300) {
+                fab.style.opacity = '1';
+                fab.style.visibility = 'visible';
+            } else {
+                fab.style.opacity = '0';
+                fab.style.visibility = 'hidden';
+            }
+        });
+
+        // Initialiser le FAB comme caché
+        document.querySelector('.fab').style.opacity = '0';
+        document.querySelector('.fab').style.visibility = 'hidden';
+        document.querySelector('.fab').style.transition = 'opacity 0.3s, visibility 0.3s';
+
+        // Highlight de la section active dans la navigation
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.style.background = '';
+                        link.style.color = '';
+                    });
+                    const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.style.background = 'var(--primary)';
+                        activeLink.style.color = 'white';
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Animation d'entrée pour les cartes
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            cardObserver.observe(card);
+        });
+
+        // Copier le code au clic sur les code-blocks
+        document.querySelectorAll('.code-block').forEach(block => {
+            block.style.cursor = 'pointer';
+            block.title = 'Cliquer pour copier le code';
+            
+            block.addEventListener('click', async () => {
+                const code = block.textContent;
+                try {
+                    await navigator.clipboard.writeText(code);
+                    
+                    // Feedback visuel
+                    const originalBg = block.style.background;
+                    block.style.background = '#27ae60';
+                    block.style.transition = 'background 0.3s';
+                    
+                    setTimeout(() => {
+                        block.style.background = originalBg;
+                    }, 500);
+                    
+                    // Message temporaire
+                    const message = document.createElement('div');
+                    message.textContent = '✓ Code copié !';
+                    message.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: #27ae60;
+                        color: white;
+                        padding: 15px 25px;
+                        border-radius: 10px;
+                        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                        z-index: 10000;
+                        animation: slideIn 0.3s ease;
+                    `;
+                    document.body.appendChild(message);
+                    
+                    setTimeout(() => {
+                        message.style.animation = 'slideOut 0.3s ease';
+                        setTimeout(() => message.remove(), 300);
+                    }, 2000);
+                } catch (err) {
+                    console.error('Erreur lors de la copie:', err);
+                }
+            });
+        });
+
+        // Animations CSS pour les messages
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+
+            @media print {
+                .nav-menu, .fab {
+                    display: none;
+                }
+                .section {
+                    page-break-inside: avoid;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Progress bar pour le scroll (optionnel)
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+            z-index: 10000;
+            transition: width 0.1s;
+        `;
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.pageYOffset / windowHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+
+        // Impression optimisée
+        window.addEventListener('beforeprint', () => {
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.classList.add('active');
+            });
+        });
+
+        window.addEventListener('afterprint', () => {
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.classList.remove('active');
+            });
+        });
+
+        // Ajout d'une fonction de recherche (optionnel)
+        function addSearchBar() {
+            const searchContainer = document.createElement('div');
+            searchContainer.style.cssText = `
+                background: white;
+                padding: 20px;
+                border-radius: 15px;
+                margin-bottom: 20px;
+                box-shadow: 0 5px 20px var(--shadow);
+            `;
+            searchContainer.innerHTML = `
+                <input type="text" id="searchInput" placeholder="🔍 Rechercher dans le document..." style="
+                    width: 100%;
+                    padding: 12px 20px;
+                    border: 2px solid var(--border);
+                    border-radius: 10px;
+                    font-size: 1rem;
+                    transition: border-color 0.3s;
+                ">
+            `;
+            
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.parentNode.insertBefore(searchContainer, navMenu);
+            
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('focus', () => {
+                searchInput.style.borderColor = 'var(--primary)';
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.style.borderColor = 'var(--border)';
+            });
+            
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const sections = document.querySelectorAll('.section');
+                
+                if (searchTerm.length < 2) {
+                    sections.forEach(section => {
+                        section.style.display = '';
+                    });
+                    return;
+                }
+                
+                sections.forEach(section => {
+                    const text = section.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        section.style.display = '';
+                        // Highlight le terme recherché
+                        section.style.background = 'linear-gradient(135deg, #FFFEF7 0%, #FFF9E6 100%)';
+                        setTimeout(() => {
+                            section.style.background = 'var(--bg-card)';
+                            section.style.transition = 'background 0.5s';
+                        }, 1000);
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Activer la barre de recherche
+        addSearchBar();
+
+        // Mode sombre (toggle optionnel)
+        function addDarkModeToggle() {
+            const toggle = document.createElement('div');
+            toggle.innerHTML = '🌙';
+            toggle.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                right: 30px;
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                z-index: 1000;
+            `;
+            
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                toggle.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            });
+            
+            toggle.addEventListener('mouseenter', () => {
+                toggle.style.transform = 'scale(1.1)';
+            });
+            
+            toggle.addEventListener('mouseleave', () => {
+                toggle.style.transform = 'scale(1)';
+            });
+            
+            document.body.appendChild(toggle);
+            
+            // Styles pour le mode sombre
+            const darkModeStyle = document.createElement('style');
+            darkModeStyle.textContent = `
+                body.dark-mode {
+                    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                    color: #ECF0F1;
+                }
+                body.dark-mode .section {
+                    background: #2C3E50;
+                    color: #ECF0F1;
+                }
+                body.dark-mode .nav-menu {
+                    background: #2C3E50;
+                }
+                body.dark-mode .card {
+                    background: #34495E;
+                    color: #ECF0F1;
+                }
+                body.dark-mode .header {
+                    background: linear-gradient(135deg, #34495E 0%, #2C3E50 100%);
+                }
+                body.dark-mode table tbody tr {
+                    background: #2C3E50;
+                }
+                body.dark-mode table tbody tr:hover {
+                    background: #34495E;
+                }
+                body.dark-mode .info-box,
+                body.dark-mode .success-box,
+                body.dark-mode .warning-box {
+                    background: #34495E;
+                    border-left-color: var(--primary);
+                }
+                body.dark-mode .nav-link {
+                    background: #34495E;
+                    color: #ECF0F1;
+                }
+                body.dark-mode .section-title {
+                    color: var(--secondary);
+                }
+                body.dark-mode h3, body.dark-mode h4 {
+                    color: #ECF0F1;
+                }
+                body.dark-mode .accordion-header {
+                    background: #34495E;
+                }
+                body.dark-mode .accordion-content {
+                    background: #2C3E50;
+                }
+                body.dark-mode #searchInput {
+                    background: #34495E;
+                    color: #ECF0F1;
+                    border-color: #4A5F7F;
+                }
+            `;
+            document.head.appendChild(darkModeStyle);
+        }
+
+        // Activer le toggle mode sombre
+        addDarkModeToggle();
+
+        // Easter egg : Konami code
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+        
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.keyCode);
+            konamiCode = konamiCode.slice(-10);
+            
+            if (konamiCode.join(',') === konamiSequence.join(',')) {
+                // Animation spéciale
+                const confetti = document.createElement('div');
+                confetti.textContent = '🎉 Code Konami activé ! Bon courage pour votre projet ! 🚀';
+                confetti.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 30px 50px;
+                    border-radius: 20px;
+                    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+                    z-index: 10001;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    text-align: center;
+                    animation: celebration 0.5s ease;
+                `;
+                
+                document.body.appendChild(confetti);
+                
+                // Animation de célébration
+                const celebrationStyle = document.createElement('style');
+                celebrationStyle.textContent = `
+                    @keyframes celebration {
+                        0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 0; }
+                        50% { transform: translate(-50%, -50%) scale(1.2) rotate(180deg); opacity: 1; }
+                        100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(celebrationStyle);
+                
+                setTimeout(() => {
+                    confetti.style.animation = 'slideOut 0.5s ease';
+                    setTimeout(() => confetti.remove(), 500);
+                }, 3000);
+                
+                konamiCode = []; // Reset
+            }
+        });
+
+        // Log pour confirmer que le script est chargé
+        console.log('%c📚 Cahier des Charges PRJ101 chargé avec succès! ', 'background: #6B9BD1; color: white; font-size: 16px; padding: 10px; border-radius: 5px;');
+        console.log('%c💡 Astuce: Essayez le code Konami (↑↑↓↓←→←→BA) pour un message spécial!', 'color: #A8D5BA; font-size: 12px;');
+    </script>
+</body>
+</html>

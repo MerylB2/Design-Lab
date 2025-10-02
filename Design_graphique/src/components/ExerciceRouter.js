@@ -9,6 +9,7 @@ import Exercice4 from '../Exercices/couleur/execice4';
 import Exercice5 from '../Exercices/couleur/exercice5';
 import Exercice6 from '../Exercices/couleur/exercice6';
 import Projet1 from '../Exercices/projets/projet1';
+import ProjetFinal from '../Exercices/projets/projetFinal';
 
 const ExerciceRouter = ({ exerciceId, onClose }) => {
   const exerciceComponents = {
@@ -18,7 +19,8 @@ const ExerciceRouter = ({ exerciceId, onClose }) => {
     'ex4': Exercice4,
     'ex5': Exercice5,
     'ex6': Exercice6,
-    'projet1': Projet1
+    'projet1': Projet1,
+    'projetFinal': ProjetFinal
   };
 
   const ExerciceComponent = exerciceComponents[exerciceId];
