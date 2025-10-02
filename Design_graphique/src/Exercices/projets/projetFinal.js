@@ -17,7 +17,9 @@ import {
   Calendar,
   Target,
   Award,
-  TrendingUp
+  TrendingUp,
+  Palette,
+  Lightbulb
 } from 'lucide-react';
 
 const ProjetFinalS1 = () => {
@@ -113,9 +115,9 @@ const ProjetFinalS1 = () => {
         <div className="bg-gradient-to-r from-indigo-600 to-blue-600 text-white p-12 rounded-2xl mb-8 text-center shadow-xl">
           <h1 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
             <BookOpen className="w-10 h-10" />
-            Cahier des Charges - Module PRJ101
+            Projet Final S1 : Mini-application + UI simple
           </h1>
-          <p className="text-xl opacity-95">Projet Final S1 : Mini-application + UI simple</p>
+          <p className="text-xl opacity-95">Cahier des Charges - Module PRJ101</p>
         </div>
 
         {/* Navigation */}
@@ -377,7 +379,427 @@ const ProjetFinalS1 = () => {
           </div>
         </section>
 
-        {/* Section 6: Présentation */}
+        {/* Section 6: Référentiel de compétences */}
+        <section id="compétences" className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+          <h2 className="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-3 pb-4 border-b-2 border-indigo-200">
+            <Users className="w-8 h-8" />
+            Référentiel de Compétences
+          </h2>
+
+          <div className="space-y-4">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border-l-4 border-blue-500">
+              <div className="flex items-center gap-3 mb-4">
+                <Code className="w-6 h-6 text-blue-600" />
+                <h3 className="text-xl font-bold text-blue-800">Développement & Systèmes</h3>
+                <button
+                  onClick={() => toggleAccordion('dev-systemes')}
+                  className="ml-auto text-blue-600 hover:text-blue-800"
+                >
+                  {activeSection === 'dev-systemes' ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                </button>
+              </div>
+              
+              {activeSection === 'dev-systemes' && (
+                <div className="space-y-4">
+                  <div className="mb-4">
+                    <h4 className="font-bold text-slate-800 mb-2">Connaissances</h4>
+                    <ul className="list-disc list-inside space-y-1 text-slate-700 ml-4">
+                      <li>Algorithmique et structures de données</li>
+                      <li>Bases de données relationnelles</li>
+                      <li>Programmation web/mobile (Python/JavaScript)</li>
+                      <li>Réseaux et systèmes (Linux, TCP/IP)</li>
+                    </ul>
+                  </div>
+
+                  <div className="mb-4">
+                    <h4 className="font-bold text-slate-800 mb-2">Savoir-faire</h4>
+                    <ul className="list-disc list-inside space-y-1 text-slate-700 ml-4">
+                      <li>Développer une application simple et fonctionnelle</li>
+                      <li>Administrer une base de données SQL</li>
+                      <li>Configurer un réseau local et environnement système</li>
+                      <li>Prototyper une interface utilisateur</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-blue-100 p-4 rounded-lg">
+                    <strong className="text-blue-800">Savoir-être :</strong> Rigueur, esprit analytique, autonomie
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border-l-4 border-red-500">
+              <div className="flex items-center gap-3 mb-4">
+                <Shield className="w-6 h-6 text-red-600" />
+                <h3 className="text-xl font-bold text-red-800">Cybersécurité & RGPD</h3>
+                <button
+                  onClick={() => toggleAccordion('cybersecurite')}
+                  className="ml-auto text-red-600 hover:text-red-800"
+                >
+                  {activeSection === 'cybersecurite' ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                </button>
+              </div>
+              
+              {activeSection === 'cybersecurite' && (
+                <div className="space-y-4">
+                  <div className="mb-4">
+                    <h4 className="font-bold text-slate-800 mb-2">Connaissances</h4>
+                    <ul className="list-disc list-inside space-y-1 text-slate-700 ml-4">
+                      <li>Principes de sécurité informatique</li>
+                      <li>Cryptographie de base</li>
+                      <li>Législation RGPD et protection des données</li>
+                    </ul>
+                  </div>
+
+                  <div className="mb-4">
+                    <h4 className="font-bold text-slate-800 mb-2">Savoir-faire</h4>
+                    <ul className="list-disc list-inside space-y-1 text-slate-700 ml-4">
+                      <li>Identifier les vulnérabilités potentielles</li>
+                      <li>Appliquer les bonnes pratiques SSI</li>
+                      <li>Intégrer la sécurité dès le développement</li>
+                      <li>Implémenter les droits utilisateurs RGPD</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-red-100 p-4 rounded-lg">
+                    <strong className="text-red-800">Savoir-être :</strong> Esprit critique, sens des responsabilités, éthique
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border-l-4 border-purple-500">
+              <div className="flex items-center gap-3 mb-4">
+                <Palette className="w-6 h-6 text-purple-600" />
+                <h3 className="text-xl font-bold text-purple-800">Design & UX/UI</h3>
+                <button
+                  onClick={() => toggleAccordion('design-ux')}
+                  className="ml-auto text-purple-600 hover:text-purple-800"
+                >
+                  {activeSection === 'design-ux' ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                </button>
+              </div>
+              
+              {activeSection === 'design-ux' && (
+                <div className="space-y-4">
+                  <div className="mb-4">
+                    <h4 className="font-bold text-slate-800 mb-2">Connaissances</h4>
+                    <ul className="list-disc list-inside space-y-1 text-slate-700 ml-4">
+                      <li>Bases du design graphique</li>
+                      <li>Principes d'ergonomie</li>
+                      <li>Psychologie de l'utilisateur</li>
+                      <li>Méthodologies de conception centrée utilisateur</li>
+                    </ul>
+                  </div>
+
+                  <div className="mb-4">
+                    <h4 className="font-bold text-slate-800 mb-2">Savoir-faire</h4>
+                    <ul className="list-disc list-inside space-y-1 text-slate-700 ml-4">
+                      <li>Concevoir des maquettes (wireframes, mockups)</li>
+                      <li>Tester un prototype</li>
+                      <li>Améliorer l'expérience utilisateur</li>
+                      <li>Créer une interface cohérente et accessible</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-purple-100 p-4 rounded-lg">
+                    <strong className="text-purple-800">Savoir-être :</strong> Créativité, écoute, sens du détail
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 7: Cadrage du projet */}
+        <section id="cadrage" className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+          <h2 className="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-3 pb-4 border-b-2 border-indigo-200">
+            <Target className="w-8 h-8" />
+            Cadrage du Projet
+          </h2>
+
+          <h3 className="text-xl font-bold text-slate-800 mb-6 border-l-4 border-indigo-400 pl-4">
+            3.1 Types d'applications suggérés
+          </h3>
+
+          <div className="space-y-4 mb-8">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border-l-4 border-green-500">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">G</div>
+                <h4 className="text-xl font-bold text-green-800">Applications de gestion</h4>
+              </div>
+              <ul className="space-y-2 text-slate-700">
+                <li><strong>Gestionnaire de tâches avancé :</strong> To-do list avec catégories, priorités, sous-tâches, statistiques</li>
+                <li><strong>Bibliothèque personnelle :</strong> Gestion de livres, films, musique avec recherche et statistiques</li>
+                <li><strong>Gestionnaire de budget :</strong> Suivi revenus/dépenses, catégories, graphiques, objectifs d'épargne</li>
+                <li><strong>Carnet d'adresses intelligent :</strong> Contacts avec historique d'interactions, rappels, groupes</li>
+                <li><strong>Système de réservation :</strong> Gestion de ressources (salles, matériel) avec calendrier</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border-l-4 border-blue-500">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">U</div>
+                <h4 className="text-xl font-bold text-blue-800">Applications utilitaires</h4>
+              </div>
+              <ul className="space-y-2 text-slate-700">
+                <li><strong>Calculatrice avancée :</strong> Opérations complexes, historique, grapheur de fonctions</li>
+                <li><strong>Convertisseur universel :</strong> Devises, unités, formats avec API temps réel</li>
+                <li><strong>Gestionnaire de mots de passe :</strong> Génération sécurisée, stockage chiffré, évaluation de force</li>
+                <li><strong>Outil de prise de notes :</strong> Markdown, organisation par tags, recherche, export</li>
+                <li><strong>Chronomètre/Pomodoro :</strong> Multitâche, statistiques, technique Pomodoro</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border-l-4 border-purple-500">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">L</div>
+                <h4 className="text-xl font-bold text-purple-800">Applications ludiques/éducatives</h4>
+              </div>
+              <ul className="space-y-2 text-slate-700">
+                <li><strong>Plateforme de quiz :</strong> Création de quiz, catégories, scores, classements</li>
+                <li><strong>Jeu éducatif :</strong> Mathématiques, langues avec progression et badges</li>
+                <li><strong>Flashcards (répétition espacée) :</strong> Algorithme Leitner, statistiques d'apprentissage</li>
+                <li><strong>Générateur créatif :</strong> Histoires, noms, poèmes avec paramètres personnalisables</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-xl font-bold text-slate-800 mb-6 border-l-4 border-indigo-400 pl-4">
+            3.2 Complexité attendue
+          </h3>
+          
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-400 p-6 rounded-lg mb-6">
+            <p className="text-slate-700 mb-3">Le projet doit être "simple" mais complet :</p>
+            <ul className="space-y-1 text-slate-700 ml-4">
+              <li>• 5-8 fonctionnalités principales maximum</li>
+              <li>• 3 à 6 tables en base de données</li>
+              <li>• Application mono-page ou 3-4 pages maximum</li>
+              <li>• 30-50 heures de développement estimé</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Section 8: Livrables finaux */}
+        <section id="livrables" className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+          <h2 className="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-3 pb-4 border-b-2 border-indigo-200">
+            <BookOpen className="w-8 h-8" />
+            Livrables Finaux
+          </h2>
+
+          <h3 className="text-xl font-bold text-slate-800 mb-6 border-l-4 border-indigo-400 pl-4">
+            Livrables techniques
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl border-l-4 border-slate-500">
+              <div className="flex items-center gap-3 mb-3">
+                <Code className="w-6 h-6 text-slate-600" />
+                <h4 className="font-bold text-slate-800">Code source</h4>
+              </div>
+              <ul className="space-y-1 text-sm text-slate-700">
+                <li>• Repository Git complet</li>
+                <li>• Code commenté et structuré</li>
+                <li>• Requirements.txt / package.json</li>
+                <li>• .gitignore configuré</li>
+                <li>• Historique de commits cohérent</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border-l-4 border-blue-500">
+              <div className="flex items-center gap-3 mb-3">
+                <Database className="w-6 h-6 text-blue-600" />
+                <h4 className="font-bold text-slate-800">Base de données</h4>
+              </div>
+              <ul className="space-y-1 text-sm text-slate-700">
+                <li>• MCD ou schéma relationnel</li>
+                <li>• Scripts SQL (création, population)</li>
+                <li>• Dictionnaire de données</li>
+                <li>• Données de démonstration</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border-l-4 border-green-500">
+              <div className="flex items-center gap-3 mb-3">
+                <BookOpen className="w-6 h-6 text-green-600" />
+                <h4 className="font-bold text-slate-800">Documentation</h4>
+              </div>
+              <ul className="space-y-1 text-sm text-slate-700">
+                <li>• README.md en anglais</li>
+                <li>• Guide d'installation Linux</li>
+                <li>• Documentation technique</li>
+                <li>• Manuel utilisateur</li>
+                <li>• Architecture documentée</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border-l-4 border-purple-500">
+              <div className="flex items-center gap-3 mb-3">
+                <Shield className="w-6 h-6 text-purple-600" />
+                <h4 className="font-bold text-slate-800">Déploiement</h4>
+              </div>
+              <ul className="space-y-1 text-sm text-slate-700">
+                <li>• Scripts d'installation</li>
+                <li>• Scripts de démarrage/arrêt</li>
+                <li>• Configuration système</li>
+                <li>• Guide de troubleshooting</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-xl font-bold text-slate-800 mb-6 border-l-4 border-indigo-400 pl-4">
+            Gestion de projet
+          </h3>
+          
+          <ul className="space-y-3 mb-6">
+            <li className="p-4 bg-slate-50 rounded-lg">Spécifications fonctionnelles détaillées</li>
+            <li className="p-4 bg-slate-50 rounded-lg">Planning prévisionnel vs réel (Gantt ou Kanban)</li>
+            <li className="p-4 bg-slate-50 rounded-lg">Journal de bord hebdomadaire complet</li>
+            <li className="p-4 bg-slate-50 rounded-lg">Difficultés rencontrées et solutions apportées</li>
+            <li className="p-4 bg-slate-50 rounded-lg">Méthodologie adoptée (Agile, Scrum, etc.)</li>
+            <li className="p-4 bg-slate-50 rounded-lg">Analyse des risques et mitigation</li>
+          </ul>
+        </section>
+
+        {/* Section 9: Conseils pratiques */}
+        <section id="conseils" className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+          <h2 className="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-3 pb-4 border-b-2 border-indigo-200">
+            <Lightbulb className="w-8 h-8" />
+            Conseils Pratiques
+          </h2>
+
+          <h3 className="text-xl font-bold text-slate-800 mb-6 border-l-4 border-indigo-400 pl-4">
+            Stratégie de développement
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border-l-4 border-green-500">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                <h4 className="font-bold text-green-800">Commencer simple</h4>
+              </div>
+              <ul className="space-y-2 text-sm text-slate-700">
+                <li>• Développez d'abord un MVP (Minimum Viable Product)</li>
+                <li>• Priorisez les fonctionnalités CRUD de base</li>
+                <li>• Interface basique mais fonctionnelle d'abord</li>
+                <li>• Ajoutez les fonctionnalités avancées ensuite</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl border-l-4 border-blue-500">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                <h4 className="font-bold text-blue-800">Tester constamment</h4>
+              </div>
+              <ul className="space-y-2 text-sm text-slate-700">
+                <li>• Testez chaque fonctionnalité immédiatement</li>
+                <li>• Vérifiez sur mobile ET desktop</li>
+                <li>• Testez avec différents utilisateurs/données</li>
+                <li>• Corrigez les bugs au fur et à mesure</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border-l-4 border-purple-500">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                <h4 className="font-bold text-purple-800">Gérer son temps</h4>
+              </div>
+              <ul className="space-y-2 text-sm text-slate-700">
+                <li>• Planifiez 20% de temps en plus que prévu</li>
+                <li>• Documentez au fur et à mesure</li>
+                <li>• Commitez régulièrement sur Git</li>
+                <li>• Préparez la présentation en avance</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-xl border-l-4 border-orange-500">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-orange-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                <h4 className="font-bold text-orange-800">Rester organisé</h4>
+              </div>
+              <ul className="space-y-2 text-sm text-slate-700">
+                <li>• Structurez votre code proprement</li>
+                <li>• Nommez clairement variables et fonctions</li>
+                <li>• Commentez les parties complexes</li>
+                <li>• Maintenez un journal de bord</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-xl font-bold text-slate-800 mb-6 border-l-4 border-indigo-400 pl-4">
+            Pièges à éviter
+          </h3>
+
+          <div className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-400 p-6 rounded-lg mb-8">
+            <h4 className="font-bold text-red-800 mb-3">Erreurs fréquentes :</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ul className="space-y-2 text-sm text-slate-700">
+                <li>• Vouloir faire trop complexe dès le début</li>
+                <li>• Négliger la sécurité ("je ferai ça après")</li>
+                <li>• Laisser la documentation pour la fin</li>
+                <li>• Ne pas versionner son code régulièrement</li>
+              </ul>
+              <ul className="space-y-2 text-sm text-slate-700">
+                <li>• Ignorer le responsive design</li>
+                <li>• Ne pas tester sur différents navigateurs</li>
+                <li>• Coder sans MCD/wireframes</li>
+                <li>• Procrastiner la préparation de soutenance</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-xl font-bold text-slate-800 mb-6 border-l-4 border-indigo-400 pl-4">
+            Ressources utiles
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl border-l-4 border-slate-500">
+              <h4 className="font-bold text-slate-800 mb-3">Outils recommandés</h4>
+              <ul className="space-y-1 text-sm text-slate-700">
+                <li>• VS Code + extensions Python/JS</li>
+                <li>• Git + GitHub/GitLab</li>
+                <li>• Postman pour tester APIs</li>
+                <li>• Chrome DevTools</li>
+                <li>• MySQL Workbench/phpMyAdmin</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-xl border-l-4 border-indigo-500">
+              <h4 className="font-bold text-slate-800 mb-3">Documentation</h4>
+              <ul className="space-y-1 text-sm text-slate-700">
+                <li>• MDN Web Docs (JavaScript)</li>
+                <li>• Python.org documentation</li>
+                <li>• Flask/Django documentation</li>
+                <li>• W3Schools pour CSS/HTML</li>
+                <li>• Stack Overflow (mais pas copier-coller !)</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border-l-4 border-green-500">
+              <h4 className="font-bold text-slate-800 mb-3">Design</h4>
+              <ul className="space-y-1 text-sm text-slate-700">
+                <li>• Bootstrap/Tailwind CSS</li>
+                <li>• Google Fonts</li>
+                <li>• Color palette generators</li>
+                <li>• Unsplash pour images libres</li>
+                <li>• Figma pour wireframes</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-amber-50 to-yellow-50 border-l-4 border-amber-400 p-6 rounded-lg">
+            <div className="flex items-center gap-2 mb-3">
+              <Lightbulb className="w-5 h-5 text-amber-600" />
+              <span className="font-bold text-amber-800">Conseil final :</span>
+            </div>
+            <p className="text-slate-700 text-lg">
+              <strong>N'ayez pas peur de demander de l'aide !</strong> Vos encadrants, vos camarades et la communauté en ligne sont là pour vous accompagner. 
+              Un problème qui vous bloque 2 heures peut être résolu en 5 minutes avec la bonne aide.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 10: Présentation */}
         <section id="présentation" className="bg-white rounded-2xl shadow-xl p-8 mb-8">
           <h2 className="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-3 pb-4 border-b-2 border-indigo-200">
             <Presentation className="w-8 h-8" />
