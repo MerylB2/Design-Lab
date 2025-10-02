@@ -8,7 +8,7 @@ const SpecimenTypographiqueMockup = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-slate-800 mb-3">
-            Mockup Visuel - Exercice 2
+            Exercice 2
           </h1>
           <p className="text-lg text-slate-600">
             Création d'un Spécimen Typographique

@@ -140,7 +140,7 @@ const ContrasteLisibiliteExercice = () => {
           <div className="flex items-center justify-center gap-3 mb-4">
             <Eye className="w-10 h-10 text-indigo-600" />
             <h1 className="text-4xl font-bold text-slate-800">
-              Mockup Visuel - Exercice 5
+              Exercice 5
             </h1>
           </div>
           <p className="text-lg text-slate-600">

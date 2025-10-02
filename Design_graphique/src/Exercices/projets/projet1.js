@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Palette, Sun, Calendar, MessageCircle, ShoppingBag } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Palette, Sun, Calendar, MessageCircle, ShoppingBag } from 'lucide-react';
 
 const RefonteInterfaceProjet = () => {
   const [selectedProject, setSelectedProject] = useState('meteo');
@@ -326,7 +326,7 @@ const RefonteInterfaceProjet = () => {
           <div className="flex items-center justify-center gap-3 mb-4">
             <Palette className="w-10 h-10 text-violet-600" />
             <h1 className="text-4xl font-bold text-slate-800">
-              Mockup Visuel - Projet 1
+              Projet 1
             </h1>
           </div>
           <p className="text-lg text-slate-600">
@@ -467,17 +467,45 @@ const RefonteInterfaceProjet = () => {
           </div>
         </div>
 
-        {/* Comparison Arrow */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-white rounded-full shadow-xl p-6">
-            <ArrowRight className="w-12 h-12 text-violet-600" />
+        {/* Navigation Controls */}
+        <div className="flex justify-center items-center gap-4 mb-8">
+          <button 
+            onClick={() => {
+              const projectKeys = Object.keys(projects);
+              const currentIndex = projectKeys.indexOf(selectedProject);
+              const prevIndex = currentIndex === 0 ? projectKeys.length - 1 : currentIndex - 1;
+              setSelectedProject(projectKeys[prevIndex]);
+            }}
+            className="bg-white rounded-full shadow-xl p-4 hover:shadow-2xl transition-all hover:scale-110"
+            title="Projet précédent"
+          >
+            <ArrowLeft className="w-8 h-8 text-violet-600" />
+          </button>
+          
+          <div className="bg-white rounded-full shadow-xl px-8 py-4">
+            <span className="text-violet-600 font-semibold">
+              {Object.keys(projects).indexOf(selectedProject) + 1} / {Object.keys(projects).length}
+            </span>
           </div>
+          
+          <button 
+            onClick={() => {
+              const projectKeys = Object.keys(projects);
+              const currentIndex = projectKeys.indexOf(selectedProject);
+              const nextIndex = currentIndex === projectKeys.length - 1 ? 0 : currentIndex + 1;
+              setSelectedProject(projectKeys[nextIndex]);
+            }}
+            className="bg-white rounded-full shadow-xl p-4 hover:shadow-2xl transition-all hover:scale-110"
+            title="Projet suivant"
+          >
+            <ArrowRight className="w-8 h-8 text-violet-600" />
+          </button>
         </div>
 
         {/* Methodology Guide */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center">
-            Méthodologie de Refonte Colorimétrique
+             Colorimétrique
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">

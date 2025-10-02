@@ -117,7 +117,7 @@ const ProjetFinalS1 = () => {
             <BookOpen className="w-10 h-10" />
             Projet Final S1 : Mini-application + UI simple
           </h1>
-          <p className="text-xl opacity-95">Cahier des Charges - Module PRJ101</p>
+          <p className="text-xl opacity-95">Cahier des Charges</p>
         </div>
 
         {/* Navigation */}
@@ -378,6 +378,7 @@ const ProjetFinalS1 = () => {
             </p>
           </div>
         </section>
+
 
         {/* Section 6: Référentiel de compétences */}
         <section id="compétences" className="bg-white rounded-2xl shadow-xl p-8 mb-8">
