@@ -166,7 +166,8 @@ const ProjetFinalS1 = () => {
                 <Calendar className="w-6 h-6 text-green-600" />
                 <h4 className="font-bold text-green-800">Durée</h4>
               </div>
-              <p className="text-slate-700">6-8 semaines<br />30-50 heures de travail</p>
+              <p className="text-slate-700">Débutant : 8-12 semaines<br />60-120 heures de travail</p>
+              <p className="text-slate-700">Intermédiaire : 6-8 semaines<br />50-90 heures de travail</p>
             </div>
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border-l-4 border-purple-500">
               <div className="flex items-center gap-2 mb-3">

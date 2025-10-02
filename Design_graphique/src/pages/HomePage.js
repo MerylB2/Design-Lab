@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Type, Palette, Layers, ChevronRight, ArrowLeft, ArrowRight, Play } from 'lucide-react';
+import { Type, Palette, Layers, ChevronRight, ArrowLeft, ArrowRight, Play, Monitor, GraduationCap, Target, Users, BookOpen, Star } from 'lucide-react';
 
 const HomePage = ({ setCurrentPage }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,30 +9,33 @@ const HomePage = ({ setCurrentPage }) => {
   const slides = [
     {
       id: 1,
-      title: "Projet 1 : Refonte Colorimétrique",
-      description: "Transformez des interfaces existantes avec une nouvelle palette de couleurs harmonieuse et accessible",
-      image: "bg-gradient-to-br from-slate-50 via-blue-50 to-sky-100",
+      title: "Design Graphique",
+      description: "Maîtrisez les fondamentaux : typographie, couleur, composition et théorie du design",
+      image: "bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50",
       icon: <Palette className="w-12 h-12" />,
-      action: () => setCurrentPage('projets'),
-      badge: "Nouveau"
+      action: () => setCurrentPage('design-graphique'),
+      badge: "Disponible",
+      stats: "6 exercices • 4h30"
     },
     {
       id: 2,
-      title: "Maîtrise de la Typographie",
-      description: "Apprenez à identifier, hiérarchiser et créer des compositions typographiques efficaces",
-      image: "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50",
-      icon: <Type className="w-12 h-12" />,
-      action: () => setCurrentPage('typo'),
-      badge: "Populaire"
+      title: "UI/UX Design",
+      description: "Créez des interfaces utilisateur intuitives et des expériences utilisateur optimales",
+      image: "bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50",
+      icon: <Monitor className="w-12 h-12" />,
+      action: () => setCurrentPage('ui-ux-design'),
+      badge: "Bientôt",
+      stats: "7 exercices • 6h30"
     },
     {
       id: 3,
-      title: "Projet Final S1",
-      description: "Développez une application complète en mobilisant toutes vos compétences acquises",
+      title: "Projets Pratiques",
+      description: "Appliquez vos connaissances sur des projets concrets et créez votre portfolio",
       image: "bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50",
       icon: <Layers className="w-12 h-12" />,
       action: () => setCurrentPage('projets'),
-      badge: "Défi"
+      badge: "Portfolio",
+      stats: "2 projets • Applications réelles"
     }
   ];
 
@@ -80,28 +83,62 @@ const HomePage = ({ setCurrentPage }) => {
       {/* Content */}
       <div className="relative z-10">
         {/* Hero Section */}
-        <div className="text-center mb-16 pt-16">
-        <h1 className="text-5xl font-bold text-slate-800 mb-4">
-          Maîtrisez le Design Graphique
-        </h1>
-        <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-          Une plateforme complète d'apprentissage pour développer vos compétences en UI/UX Design, typographie et théorie des couleurs
-        </p>
-        <div className="flex justify-center gap-4">
-          <button
-            onClick={() => setCurrentPage('typo')}
-            className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
-          >
-            Commencer les exercices
-          </button>
-          <button
-            onClick={() => setCurrentPage('ressources')}
-            className="bg-white text-slate-700 px-8 py-3 rounded-lg font-semibold border-2 border-slate-300 hover:border-violet-400 transition-all"
-          >
-            Voir les ressources
-          </button>
+        <div className="text-center mb-16 pt-8">
+          <div className="mb-6">
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full mb-4">
+              <Star className="w-4 h-4" />
+              <span className="text-sm font-medium">Plateforme d'apprentissage en design</span>
+            </div>
+            <h1 className="text-5xl font-bold text-slate-800 mb-4 leading-tight">
+              Apprenez le Design
+              <br />
+              <span className="bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
+                Créatif & Digital
+              </span>
+            </h1>
+            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+              De la typographie au design d'interface, développez vos compétences créatives avec des cours structurés et des projets pratiques
+            </p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <button
+              onClick={() => setCurrentPage('design-graphique')}
+              className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all flex items-center justify-center gap-3 group"
+            >
+              <Palette className="w-6 h-6" />
+              Commencer le Design Graphique
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => setCurrentPage('cours')}
+              className="bg-white/90 backdrop-blur-sm text-slate-700 px-8 py-4 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-3 border border-white/40"
+            >
+              <GraduationCap className="w-6 h-6" />
+              Voir tous les cours
+            </button>
+          </div>
+
+          {/* Quick Stats */}
+          <div className="flex flex-wrap justify-center gap-8 text-center">
+            <div>
+              <div className="text-2xl font-bold text-slate-800">13</div>
+              <div className="text-sm text-slate-600">Exercices</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-slate-800">2</div>
+              <div className="text-sm text-slate-600">Domaines</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-slate-800">11h</div>
+              <div className="text-sm text-slate-600">De contenu</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-slate-800">2</div>
+              <div className="text-sm text-slate-600">Projets</div>
+            </div>
+          </div>
         </div>
-      </div>
 
       {/* Carrousel Section */}
       <div className="mb-16">
@@ -137,9 +174,10 @@ const HomePage = ({ setCurrentPage }) => {
                     {/* Badge */}
                     <div className="inline-block mb-4">
                       <span className={`px-4 py-2 rounded-full text-sm font-semibold ${
-                        slide.badge === 'Nouveau' ? 'bg-green-500 text-white' :
-                        slide.badge === 'Populaire' ? 'bg-orange-500 text-white' :
-                        'bg-red-500 text-white'
+                        slide.badge === 'Disponible' ? 'bg-green-500 text-white' :
+                        slide.badge === 'Bientôt' ? 'bg-orange-500 text-white' :
+                        slide.badge === 'Portfolio' ? 'bg-purple-500 text-white' :
+                        'bg-blue-500 text-white'
                       } bg-opacity-90 backdrop-blur-sm`}>
                         {slide.badge}
                       </span>
@@ -149,9 +187,13 @@ const HomePage = ({ setCurrentPage }) => {
                       {slide.title}
                     </h2>
                     
-                    <p className="text-xl mb-8 text-slate-600 max-w-2xl">
+                    <p className="text-xl mb-4 text-slate-600 max-w-2xl">
                       {slide.description}
                     </p>
+                    
+                    <div className="mb-8">
+                      <span className="text-sm text-slate-500 font-medium">{slide.stats}</span>
+                    </div>
                     
                     <button
                       onClick={slide.action}
@@ -232,73 +274,105 @@ const HomePage = ({ setCurrentPage }) => {
         </div>
       </div>
 
-      {/* Featured Sections */}
+      {/* Features Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        
-        <div 
-          className="bg-white rounded-2xl shadow-lg p-8 cursor-pointer hover:shadow-xl transition-all border-2 border-transparent hover:border-violet-400"
-          onClick={() => setCurrentPage('typo')}
-        >
-          <div className="bg-gradient-to-br from-blue-500 to-indigo-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-            <Type className="w-8 h-8 text-white" />
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-white/20 text-center hover:shadow-xl transition-all">
+          <div className="bg-gradient-to-br from-violet-100 to-fuchsia-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+            <BookOpen className="w-8 h-8 text-violet-600" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-800 mb-3">Typographie</h3>
+          <h3 className="text-xl font-bold text-slate-800 mb-3">Cours Structurés</h3>
           <p className="text-slate-600 mb-4">
-            Apprenez à identifier les polices, créer des spécimens et hiérarchiser vos textes efficacement
+            Modules théoriques et exercices pratiques organisés pour un apprentissage progressif et efficace
           </p>
-          <div className="flex items-center text-violet-600 font-semibold">
-            3 exercices pratiques <ChevronRight className="w-5 h-5 ml-1" />
-          </div>
+          <div className="text-sm text-violet-600 font-semibold">4 modules • 13 exercices</div>
         </div>
 
-        <div 
-          className="bg-white rounded-2xl shadow-lg p-8 cursor-pointer hover:shadow-xl transition-all border-2 border-transparent hover:border-violet-400"
-          onClick={() => setCurrentPage('couleur')}
-        >
-          <div className="bg-gradient-to-br from-pink-500 to-rose-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-            <Palette className="w-8 h-8 text-white" />
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-white/20 text-center hover:shadow-xl transition-all">
+          <div className="bg-gradient-to-br from-blue-100 to-cyan-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+            <Target className="w-8 h-8 text-blue-600" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-800 mb-3">Couleur</h3>
+          <h3 className="text-xl font-bold text-slate-800 mb-3">Apprentissage Pratique</h3>
           <p className="text-slate-600 mb-4">
-            Maîtrisez la théorie des couleurs, créez des palettes harmonieuses et respectez l'accessibilité
+            Exercices interactifs et projets réels pour développer vos compétences de manière concrète
           </p>
-          <div className="flex items-center text-violet-600 font-semibold">
-            3 exercices pratiques <ChevronRight className="w-5 h-5 ml-1" />
-          </div>
+          <div className="text-sm text-blue-600 font-semibold">Projets portfolio • Applications réelles</div>
         </div>
 
-        <div 
-          className="bg-white rounded-2xl shadow-lg p-8 cursor-pointer hover:shadow-xl transition-all border-2 border-transparent hover:border-violet-400"
-          onClick={() => setCurrentPage('projets')}
-        >
-          <div className="bg-gradient-to-br from-purple-500 to-violet-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-            <Layers className="w-8 h-8 text-white" />
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-white/20 text-center hover:shadow-xl transition-all">
+          <div className="bg-gradient-to-br from-emerald-100 to-teal-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+            <Users className="w-8 h-8 text-emerald-600" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-800 mb-3">Projets</h3>
+          <h3 className="text-xl font-bold text-slate-800 mb-3">Progression Guidée</h3>
           <p className="text-slate-600 mb-4">
-            Mettez en pratique vos compétences avec des projets réels de refonte d'interfaces
+            Parcours personnalisé avec suivi de progression et recommandations adaptées à votre niveau
           </p>
-          <div className="flex items-center text-violet-600 font-semibold">
-            Projets complets <ChevronRight className="w-5 h-5 ml-1" />
-          </div>
+          <div className="text-sm text-emerald-600 font-semibold">Suivi personnalisé • Objectifs clairs</div>
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-2xl shadow-xl p-12 text-white">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div>
-            <div className="text-5xl font-bold mb-2">~100</div>
-            <p className="text-violet-100">Exercices pratiques</p>
+      {/* Learning Path */}
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-white/20">
+        <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center flex items-center justify-center gap-3">
+          <Target className="w-6 h-6 text-blue-600" />
+          Votre parcours recommandé
+        </h2>
+        
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+          <div 
+            onClick={() => setCurrentPage('design-graphique')}
+            className="flex items-center gap-4 p-6 bg-gradient-to-r from-violet-50 to-fuchsia-50 rounded-xl border border-violet-200 cursor-pointer hover:shadow-lg transition-all group"
+          >
+            <div className="bg-violet-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg">1</div>
+            <div>
+              <h3 className="font-bold text-slate-800 group-hover:text-violet-700 transition-colors">Design Graphique</h3>
+              <p className="text-sm text-slate-600">Maîtrisez les fondamentaux</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-violet-600 group-hover:translate-x-1 transition-transform" />
           </div>
-          <div>
-            <div className="text-5xl font-bold mb-2">3</div>
-            <p className="text-violet-100">Thématiques principales (pour l'instant)</p>
+
+          <div className="hidden md:block">
+            <ChevronRight className="w-6 h-6 text-slate-400" />
           </div>
-          <div>
-            <div className="text-5xl font-bold mb-2">∞</div>
-            <p className="text-violet-100">Possibilités créatives</p>
+          <div className="md:hidden">
+            <div className="w-1 h-8 bg-slate-300 rounded-full"></div>
           </div>
+
+          <div 
+            onClick={() => setCurrentPage('ui-ux-design')}
+            className="flex items-center gap-4 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-200 cursor-pointer hover:shadow-lg transition-all group opacity-60"
+          >
+            <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg">2</div>
+            <div>
+              <h3 className="font-bold text-slate-800 group-hover:text-blue-700 transition-colors">UI/UX Design</h3>
+              <p className="text-sm text-slate-600">Créez des expériences utilisateur</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" />
+          </div>
+
+          <div className="hidden md:block">
+            <ChevronRight className="w-6 h-6 text-slate-400" />
+          </div>
+          <div className="md:hidden">
+            <div className="w-1 h-8 bg-slate-300 rounded-full"></div>
+          </div>
+
+          <div 
+            onClick={() => setCurrentPage('projets')}
+            className="flex items-center gap-4 p-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl border border-emerald-200 cursor-pointer hover:shadow-lg transition-all group"
+          >
+            <div className="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg">3</div>
+            <div>
+              <h3 className="font-bold text-slate-800 group-hover:text-emerald-700 transition-colors">Portfolio Projets</h3>
+              <p className="text-sm text-slate-600">Créez vos premiers projets</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-emerald-600 group-hover:translate-x-1 transition-transform" />
+          </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="text-slate-600 text-sm">
+            Commencez par le design graphique, puis explorez l'UI/UX pour devenir un designer complet
+          </p>
         </div>
       </div>
       </div>

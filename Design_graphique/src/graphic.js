@@ -3,6 +3,9 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import ExerciceRouter from './components/ExerciceRouter';
 import HomePage from './pages/HomePage';
+import CoursPage from './pages/CoursPage';
+import DesignGraphiquePage from './pages/DesignGraphiquePage';
+import UiUxDesignPage from './pages/UiUxDesignPage';
 import TypographiePage from './pages/TypographiePage';
 import CouleurPage from './pages/CouleurPage';
 import ProjetsPage from './pages/ProjetsPage';
@@ -38,7 +41,13 @@ const SiteDesignGraphique = () => {
         
         {currentPage === 'home' && <HomePage setCurrentPage={setCurrentPage} />}
 
-        {currentPage === 'typo' && <TypographiePage setCurrentExercice={setCurrentExercice} />}
+        {currentPage === 'cours' && <CoursPage setCurrentPage={setCurrentPage} />}
+
+        {currentPage === 'design-graphique' && <DesignGraphiquePage setCurrentPage={setCurrentPage} />}
+
+        {currentPage === 'ui-ux-design' && <UiUxDesignPage setCurrentPage={setCurrentPage} />}
+
+        {currentPage === 'typo' && <TypographiePage setCurrentExercice={setCurrentExercice} setCurrentPage={setCurrentPage} />}
 
         {currentPage === 'couleur' && <CouleurPage setCurrentExercice={setCurrentExercice} />}
 

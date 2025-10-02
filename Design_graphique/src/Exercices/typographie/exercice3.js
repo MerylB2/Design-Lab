@@ -24,7 +24,7 @@ const HierarchieTexteMockup = () => {
         {/* SECTION 1: EXEMPLE PÉDAGOGIQUE */}
         <div className="mb-16">
           <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6 rounded-t-2xl">
-            <h2 className="text-3xl font-bold mb-2">📚 Section 1 : Exemple Pédagogique</h2>
+            <h2 className="text-3xl font-bold mb-2">Section 1 : Exemple Pédagogique</h2>
             <p className="text-purple-100">
               Observez les techniques de hiérarchisation avec l'exemple sur l'Intelligence Artificielle
             </p>
@@ -345,7 +345,7 @@ const HierarchieTexteMockup = () => {
         {/* SECTION 2: ARTICLES À HIÉRARCHISER */}
         <div className="mb-16">
           <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-6 rounded-t-2xl">
-            <h2 className="text-3xl font-bold mb-2">📝 Section 2 : Articles à Hiérarchiser</h2>
+            <h2 className="text-3xl font-bold mb-2">Section 2 : Articles à Hiérarchiser</h2>
             <p className="text-blue-100">
               Choisissez un article et créez votre propre hiérarchie typographique
             </p>
@@ -387,7 +387,7 @@ const HierarchieTexteMockup = () => {
                 ))}
               </div>
               <p className="text-sm text-slate-500 mt-3">
-                💡 Ces articles sont tirés du fichier articles.md et présentés en version plate
+                💡 Ces articles sont présentés en version plate
               </p>
             </div>
 
@@ -421,7 +421,7 @@ const HierarchieTexteMockup = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                    <h4 className="font-bold text-green-800 mb-3">✅ Checklist à appliquer :</h4>
+                    <h4 className="font-bold text-green-800 mb-3"> Checklist à appliquer :</h4>
                     <ul className="text-sm text-green-700 space-y-1">
                       <li>□ Titre principal : Grande taille (36-48pt) + Bold</li>
                       <li>□ Sous-titre : Taille moyenne (20-24pt) + Italique</li>
@@ -432,7 +432,7 @@ const HierarchieTexteMockup = () => {
                     </ul>
                   </div>
                   <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                    <h4 className="font-bold text-blue-800 mb-3">🎨 Conseils de pro :</h4>
+                    <h4 className="font-bold text-blue-800 mb-3"> Conseils de pro :</h4>
                     <ul className="text-sm text-blue-700 space-y-1">
                       <li>• Maximum 3-4 tailles différentes</li>
                       <li>• Restez dans la même famille de police</li>

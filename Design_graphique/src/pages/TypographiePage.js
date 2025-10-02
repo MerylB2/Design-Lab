@@ -1,8 +1,8 @@
 import React from 'react';
-import { Type } from 'lucide-react';
+import { Type, ChevronRight } from 'lucide-react';
 import { exercices } from '../data/exercices';
 
-const TypographiePage = ({ setCurrentExercice }) => {
+const TypographiePage = ({ setCurrentExercice, setCurrentPage }) => {
   return (
     <div>
       <div className="mb-12">
@@ -72,6 +72,26 @@ const TypographiePage = ({ setCurrentExercice }) => {
               <li>• <strong>Espacement</strong> : aérer pour améliorer la lecture</li>
             </ul>
           </div>
+        </div>
+      </div>
+
+      {/* Navigation Buttons */}
+      <div className="mt-12 text-center space-y-4">
+        <button
+          onClick={() => setCurrentPage('design-graphique')}
+          className="text-violet-600 hover:text-violet-700 font-medium flex items-center gap-2 mx-auto"
+        >
+          <ChevronRight className="w-4 h-4 rotate-180" />
+          Retour au Design Graphique
+        </button>
+        <div className="border-t border-slate-200 pt-4">
+          <button
+            onClick={() => setCurrentPage('home')}
+            className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-800 font-medium transition-colors group"
+          >
+            <ChevronRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
+            Retour à l'accueil
+          </button>
         </div>
       </div>
     </div>
