@@ -122,19 +122,19 @@ const HomePage = ({ setCurrentPage }) => {
           {/* Quick Stats */}
           <div className="flex flex-wrap justify-center gap-8 text-center">
             <div>
-              <div className="text-2xl font-bold text-slate-800">13</div>
+              <div className="text-2xl font-bold text-slate-800">~100</div>
               <div className="text-sm text-slate-600">Exercices</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-slate-800">2</div>
+              <div className="text-2xl font-bold text-slate-800">+2</div>
               <div className="text-sm text-slate-600">Domaines</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-slate-800">11h</div>
+              <div className="text-2xl font-bold text-slate-800">150h</div>
               <div className="text-sm text-slate-600">De contenu</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-slate-800">2</div>
+              <div className="text-2xl font-bold text-slate-800">+20</div>
               <div className="text-sm text-slate-600">Projets</div>
             </div>
           </div>

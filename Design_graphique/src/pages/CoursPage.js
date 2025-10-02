@@ -73,7 +73,7 @@ const CoursPage = ({ setCurrentPage }) => {
             <div className="text-slate-600">Exercices pratiques</div>
           </div>
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-white/20 text-center">
-            <div className="text-3xl font-bold text-green-600 mb-2">11h</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">15h</div>
             <div className="text-slate-600">Durée totale</div>
           </div>
         </div>

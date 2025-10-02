@@ -87,13 +87,13 @@ const ProjetFinalS1 = () => {
   ];
 
   const planning = [
-    { week: 'S1', phase: 'Conception', objectives: 'Analyse besoins, MCD, wireframes', deliverable: 'Specs validées' },
-    { week: 'S2', phase: 'Setup', objectives: 'Config environnement, BDD, structure', deliverable: 'Projet initialisé' },
-    { week: 'S3-4', phase: 'Développement', objectives: 'CRUD, interface basique', deliverable: 'MVP fonctionnel' },
-    { week: 'S5', phase: 'Fonctionnalités', objectives: 'Fonctionnalités avancées', deliverable: 'Version beta' },
-    { week: 'S6', phase: 'Sécurité & Tests', objectives: 'Sécurité, RGPD, corrections', deliverable: 'Version RC' },
-    { week: 'S7', phase: 'Documentation', objectives: 'Docs, polissage, déploiement', deliverable: 'Version finale' },
-    { week: 'S8', phase: 'Présentation', objectives: 'Préparation soutenance', deliverable: 'Soutenance' }
+    { week: 'S1 / S1-2', phase: 'Conception', objectives: 'Analyse besoins, MCD, wireframes', deliverable: 'Specs validées' },
+    { week: 'S2 / S2-4', phase: 'Setup', objectives: 'Config environnement, BDD, structure', deliverable: 'Projet initialisé' },
+    { week: 'S3-4 / S4-6', phase: 'Développement', objectives: 'CRUD, interface basique', deliverable: 'MVP fonctionnel' },
+    { week: 'S5 / S7-8', phase: 'Fonctionnalités', objectives: 'Fonctionnalités avancées', deliverable: 'Version beta' },
+    { week: 'S6 / S9-10', phase: 'Sécurité & Tests', objectives: 'Sécurité, RGPD, corrections', deliverable: 'Version RC' },
+    { week: 'S7 / S11', phase: 'Documentation', objectives: 'Docs, polissage, déploiement', deliverable: 'Version finale' },
+    { week: 'S8 / S12', phase: 'Présentation', objectives: 'Préparation soutenance', deliverable: 'Soutenance' }
   ];
 
   const securityChecklist = [
@@ -166,8 +166,8 @@ const ProjetFinalS1 = () => {
                 <Calendar className="w-6 h-6 text-green-600" />
                 <h4 className="font-bold text-green-800">Durée</h4>
               </div>
-              <p className="text-slate-700">Débutant : 8-12 semaines<br />60-120 heures de travail</p>
-              <p className="text-slate-700">Intermédiaire : 6-8 semaines<br />50-90 heures de travail</p>
+              <p className="text-slate-700">Débutant : 12-15 semaines<br />120-150 heures de travail</p>
+              <p className="text-slate-700">Intermédiaire : 8-10 semaines<br />80-120 heures de travail</p>
             </div>
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border-l-4 border-purple-500">
               <div className="flex items-center gap-2 mb-3">
@@ -268,7 +268,7 @@ const ProjetFinalS1 = () => {
           </h2>
 
           <h3 className="text-xl font-bold text-slate-800 mb-6 border-l-4 border-indigo-400 pl-4">
-            5.1 Grille de notation (sur 100 points)
+            Grille de notation (sur 100 points)
           </h3>
           <div className="space-y-4 mb-8">
             {evaluationCriteria.map((criteria, index) => (
@@ -351,7 +351,7 @@ const ProjetFinalS1 = () => {
           </h2>
 
           <h3 className="text-xl font-bold text-slate-800 mb-6 border-l-4 border-indigo-400 pl-4">
-            8.1 Checklist de sécurité obligatoire
+            Checklist de sécurité obligatoire
           </h3>
           <div className="space-y-3 mb-8">
             {securityChecklist.map((item, index) => (
