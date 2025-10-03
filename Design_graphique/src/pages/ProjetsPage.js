@@ -1,8 +1,8 @@
 import React from 'react';
-import { Layers, BookOpen, Palette } from 'lucide-react';
+import { Layers, BookOpen, Palette, ChevronRight } from 'lucide-react';
 import { exercices } from '../data/exercices';
 
-const ProjetsPage = ({ setCurrentExercice }) => {
+const ProjetsPage = ({ setCurrentExercice, setCurrentPage }) => {
   const projetsData = exercices.projets || [];
 
   const getProjectIcon = (projectId) => {
@@ -128,6 +128,26 @@ const ProjetsPage = ({ setCurrentExercice }) => {
             </div>
           );
         })}
+      </div>
+
+      {/* Navigation Buttons */}
+      <div className="mt-12 text-center space-y-4">
+        <button
+          onClick={() => setCurrentPage('cours')}
+          className="text-violet-600 hover:text-violet-700 font-medium flex items-center gap-2 mx-auto"
+        >
+          <ChevronRight className="w-4 h-4 rotate-180" />
+          Retour aux cours
+        </button>
+        <div className="border-t border-slate-200 pt-4">
+          <button
+            onClick={() => setCurrentPage('home')}
+            className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-800 font-medium transition-colors group"
+          >
+            <ChevronRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
+            Retour à l'accueil
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -49,11 +49,11 @@ const SiteDesignGraphique = () => {
 
         {currentPage === 'typo' && <TypographiePage setCurrentExercice={setCurrentExercice} setCurrentPage={setCurrentPage} />}
 
-        {currentPage === 'couleur' && <CouleurPage setCurrentExercice={setCurrentExercice} />}
+        {currentPage === 'couleur' && <CouleurPage setCurrentExercice={setCurrentExercice} setCurrentPage={setCurrentPage} />}
 
-        {currentPage === 'projets' && <ProjetsPage setCurrentExercice={setCurrentExercice} />}
+        {currentPage === 'projets' && <ProjetsPage setCurrentExercice={setCurrentExercice} setCurrentPage={setCurrentPage} />}
 
-        {currentPage === 'ressources' && <RessourcesPage />}
+        {currentPage === 'ressources' && <RessourcesPage setCurrentPage={setCurrentPage} />}
 
       </main>
 

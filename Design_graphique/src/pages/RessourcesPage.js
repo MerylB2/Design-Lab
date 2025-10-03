@@ -1,7 +1,7 @@
 import React from 'react';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, ChevronRight } from 'lucide-react';
 
-const RessourcesPage = () => {
+const RessourcesPage = ({ setCurrentPage }) => {
   return (
     <div>
       <div className="mb-12">
@@ -282,6 +282,17 @@ const RessourcesPage = () => {
               <p className="text-sm text-slate-600">Conception utilisable par tous, y compris personnes handicapées</p>
             </div>
           </div>
+        </div>
+
+        {/* Navigation Buttons */}
+        <div className="mt-12 text-center">
+          <button
+            onClick={() => setCurrentPage('home')}
+            className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-800 font-medium transition-colors group"
+          >
+            <ChevronRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
+            Retour à l'accueil
+          </button>
         </div>
       </div>
     </div>
